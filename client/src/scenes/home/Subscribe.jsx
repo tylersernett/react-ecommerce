@@ -21,7 +21,8 @@ const Subscribe = () => {
         m="15px auto"
         display="flex"
         alignItems="center"
-        width="50%"
+        width='75%'
+        maxWidth='500px'
         backgroundColor="#F2F2F2"
       >
         <InputBase
