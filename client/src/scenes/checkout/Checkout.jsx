@@ -75,27 +75,18 @@ const Checkout = () => {
           initialValues={initialValues}
           validationSchema={checkoutSchema[activeStep]}
         >
+          {/*      ======CHECKOUT=====       */}
+          {/*      ↳Payment  ↳Shipping      */}                    
+          {/*                    ↳address  */}
+          {/* payment:values, touched, errors, handleBlur, handleChange             shipping:values, touched, errors, handleChange, handleBlur, setFieldValue */}
+          {/* address: __type__, values, touched, errors, handleBlur, handleChange */}
           {({ values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue }) => (
             <form onSubmit={handleSubmit}>
               {isFirstStep && (
-                <Shipping
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  handleBlur={handleBlur}
-                  handleChange={handleChange}
-                  setFieldValue={setFieldValue}
-                />
+                <Shipping values={values} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} setFieldValue={setFieldValue} />
               )}
               {isSecondStep && (
-                <Payment
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  handleBlur={handleBlur}
-                  handleChange={handleChange}
-                  setFieldValue={setFieldValue}
-                />
+                <Payment values={values} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} setFieldValue={setFieldValue} />
               )}
               <Box display="flex" justifyContent="space-between" gap="50px">
                 {!isFirstStep && (
