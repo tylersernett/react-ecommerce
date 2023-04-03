@@ -124,7 +124,8 @@ const ItemDetails = () => {
 
       {/* INFORMATION */}
       <Box m="20px 0">
-        <Tabs value={value} onChange={handleChange}>
+        <Tabs value={value} onChange={handleChange} textColor="secondary"
+        indicatorColor="secondary">
           <Tab label="DESCRIPTION" value="description" />
           <Tab label="REVIEWS" value="reviews" />
         </Tabs>
