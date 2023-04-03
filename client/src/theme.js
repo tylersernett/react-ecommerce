@@ -6,22 +6,22 @@ export const shades = {
         200: "#999999",
         300: "#666666",
         400: "#333333",
-        500: "#000000",
+        500: "#101010",
         600: "#000000",
         700: "#000000",
         800: "#000000",
         900: "#000000",
     },
     secondary: {
-        100: "#f7ccd2",
-        200: "#ef99a4",
-        300: "#e66677",
-        400: "#de3349",
-        500: "#d6001c",
-        600: "#ab0016",
-        700: "#800011",
-        800: "#56000b",
-        900: "#2b0006",
+        100: "#cdf4fb",
+        200: "#b3eefa",
+        300: "#97e9f7",
+        400: "#54d8f2",
+        500: "#00d0fa",
+        600: "#00b1ec",
+        700: "#0091df",
+        800: "#014fb5",
+        900: "#030590",
     },
     neutral: {
         100: "#f5f5f5",
@@ -40,7 +40,7 @@ export const theme = createTheme({
     palette: {
         mode:'dark',
         primary: {
-            main: shades.primary[500],
+            main: shades.primary[900],
         },
         secondary: {
             main: shades.secondary[500],
@@ -53,7 +53,7 @@ export const theme = createTheme({
     },
     typography: {
         fontFamily: ["Open Sans", "sans-serif"].join(","),
-        fontSize: 11,
+        fontSize: 12,
         h1: {
             fontFamily: ["Open Sans", "sans-serif"].join(","),
             fontSize: 48,
