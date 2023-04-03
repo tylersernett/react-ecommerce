@@ -35,8 +35,10 @@ const Item = ({ item, width }) => {
           onClick={() => navigate(`/item/${item.id}`)}
           style={{ cursor: "pointer" }}
         />
+
+        {/* –  + buttons */}
         <Box
-          display={isHovered ? "block" : "none"}
+          display={isHovered ? "block" : "none"} //show -/+ and add to cart when hovered
           position="absolute"
           bottom="10%"
           left="0"
@@ -50,19 +52,19 @@ const Item = ({ item, width }) => {
               backgroundColor={shades.neutral[100]}
               borderRadius="3px"
             >
-              <IconButton onClick={() => setCount((currentCount) => Math.max(currentCount - 1, 1))}>
-                <RemoveIcon />
+              <IconButton color='primary' onClick={() => setCount((currentCount) => Math.max(currentCount - 1, 1))}>
+                <RemoveIcon sx={{color:shades.neutral[600]}} />
               </IconButton>
               <Typography color={shades.primary[300]}>{count}</Typography>
-              <IconButton onClick={() => setCount((currentCount) => currentCount + 1)}>
-                <AddIcon />
+              <IconButton color='primary' onClick={() => setCount((currentCount) => currentCount + 1)}>
+                <AddIcon sx={{color:shades.neutral[600]}} />
               </IconButton>
             </Box>
             <Button
               onClick={() => {
                 dispatch(addToCart({ item: { ...item, count } }));
               }}
-              sx={{ backgroundColor: shades.primary[300], color: "white" }}
+              sx={{ backgroundColor: shades.primary[400], color: "white" }}
             >
               Add to Cart
             </Button>
