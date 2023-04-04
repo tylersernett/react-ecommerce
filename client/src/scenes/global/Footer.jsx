@@ -7,7 +7,7 @@ function Footer() {
     palette: { neutral },
   } = useTheme();
   return (
-    <Box marginTop="70px" padding="40px 0" backgroundColor={neutral.light}>
+    <Box marginTop="70px" padding="40px 0" backgroundColor={shades.primary[900]}>
       <Box
         width="80%"
         margin="auto"
@@ -24,7 +24,7 @@ function Footer() {
             mb="30px"
             color={shades.secondary[500]}
           >
-            REACT ECOMMERCE
+            THE HOOD
           </Typography>
           <div>
           Nunc sed augue lacus viverra vitae congue eu. Eget magna fermentum iaculis eu. 
