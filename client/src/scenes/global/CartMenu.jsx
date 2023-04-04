@@ -29,7 +29,7 @@ const CartMenu = () => {
     return (
         <Box //OVERLAY
             display={isCartOpen ? "block" : "none"}
-            backgroundColor="rgba(0, 0, 0, 0.4)"
+            backgroundColor="rgba(0, 0, 0, 0.65)"
             position="fixed"
             zIndex={10}
             width="100%"
@@ -44,12 +44,12 @@ const CartMenu = () => {
                 bottom="0"
                 width="max(400px, 30%)"
                 height="100%"
-                backgroundColor="white"
+                backgroundColor="rgba(0, 0, 0, 0.8)"
             >
                 <Box padding="30px" overflow="auto" height="100%">
                     {/* HEADER */}
                     <FlexBox mb="15px">
-                        <Typography variant="h3">SHOPPING BAG ({cart.length})</Typography>
+                        <Typography variant="h3" >SHOPPING BAG ({cart.length})</Typography>
                         <IconButton onClick={() => dispatch(setIsCartOpen({}))}>
                             <CloseIcon />
                         </IconButton>
@@ -95,7 +95,7 @@ const CartMenu = () => {
                                             </Box>
 
                                             {/* PRICE */}
-                                            <Typography fontWeight="bold">
+                                            <Typography fontWeight="">
                                                 ${item.attributes.price}
                                             </Typography>
                                         </FlexBox>
@@ -110,20 +110,22 @@ const CartMenu = () => {
                     {/* ACTIONS */}
                     <Box m="20px 0">
                         <FlexBox m="20px 0">
-                            <Typography fontWeight="bold">SUBTOTAL</Typography>
+                            <Typography fontWeight="bold" >SUBTOTAL</Typography>
                             <Typography fontWeight="bold">${totalPrice}</Typography>
                         </FlexBox>
                         <Button
                             sx={{
-                                backgroundColor: shades.primary[400],
-                                color: "white",
+                                backgroundColor: shades.secondary[600],
+                                color: 'white',
                                 borderRadius: 0,
                                 minWidth: "100%",
                                 padding: "20px 40px",
+                                fontWeight: "bold",
                                 m: "20px 0",
                                 "&:hover": {
                                     color: 'black',
-                                  }
+                                    backgroundColor: shades.secondary[500],
+                                }
                             }}
                             onClick={() => {
                                 navigate("/checkout");
