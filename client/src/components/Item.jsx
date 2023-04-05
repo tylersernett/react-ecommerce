@@ -30,7 +30,7 @@ const Item = ({ item, width }) => {
         <img
           alt={item.name}
           width="300px"
-          height="400px"
+          height="300px"
           src={`http://localhost:1337${url}`}
           onClick={() => navigate(`/item/${item.id}`)}
           style={{ cursor: "pointer" }}
@@ -64,7 +64,7 @@ const Item = ({ item, width }) => {
               onClick={() => {
                 dispatch(addToCart({ item: { ...item, count } }));
               }}
-              sx={{ backgroundColor: shades.primary[400], color: "white" }}
+              sx={{ backgroundColor: shades.primary[400], color: "white" ,"&:hover": {backgroundColor: shades.secondary[500],}}}
             >
               Add to Cart
             </Button>
@@ -79,8 +79,8 @@ const Item = ({ item, width }) => {
             .replace(/^./, (str) => str.toUpperCase()) //make the first character Capital
           }
         </Typography>
-        <Typography>{name}</Typography>
-        <Typography fontWeight="bold">${price}</Typography>
+        <Typography fontWeight="bold">{name}</Typography>
+        <Typography >${price}</Typography>
       </Box>
     </Box>
   );
