@@ -1,6 +1,7 @@
 import { Box, InputBase, Divider, Typography, IconButton } from "@mui/material";
 import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined";
 import { useState } from "react";
+import { shades } from "../../theme";
 
 const Subscribe = () => {
   const [email, setEmail] = useState("");
@@ -10,9 +11,9 @@ const Subscribe = () => {
       <IconButton>
         <MarkEmailReadOutlinedIcon fontSize="large" />
       </IconButton>
-      <Typography variant="h3">Subscribe To Our Newsletter</Typography>
+      <Typography variant="h3" color={shades.secondary[500]}>Subscribe To Our Newsletter</Typography>
       <Typography>
-        and receive $20 coupon for your first order when you checkout
+        and receive a $20 coupon for your first order when you checkout
       </Typography>
 
       {/* EMAIL INPUT */}
@@ -26,13 +27,13 @@ const Subscribe = () => {
         backgroundColor="#F2F2F2"
       >
         <InputBase
-          sx={{ ml: 1, flex: 1 }}
+          sx={{ ml: 1, flex: 1, color: 'black' }}
           placeholder="Enter email"
           onChange={(e) => setEmail(e.target.value)} //useRef rather than state here?
           value={email}
         />
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-        <Typography sx={{ p: "10px", ":hover": { cursor: "pointer" } }}>
+        <Divider color='black' sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        <Typography color={shades.primary[900]} sx={{ p: "10px", ":hover": { cursor: "pointer" } }}>
           Subscribe
         </Typography>
       </Box>
