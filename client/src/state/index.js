@@ -15,7 +15,12 @@ export const cartSlice = createSlice({
         },
 
         addToCart: (state, action) => {
-            state.cart = [...state.cart, action.payload.item]; //edge: duplicate items?
+            console.log(action.payload.item)
+            if (action.payload.item.count > 0) {
+                //check that item is not already in cart
+                state.cart = [...state.cart, action.payload.item]; //edge: duplicate items?
+            }
+            //else, increase the count of existing item
         },
 
         removeFromCart: (state, action) => {
