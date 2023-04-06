@@ -16,7 +16,8 @@ const Navbar = () => {
             alignItems="center"
             width="100%"
             height="60px"
-            backgroundColor="rgba(255, 255, 255, 0.95)"
+            // backgroundColor="rgba(255, 255, 255, 0.5)"
+            backgroundColor="rgba(0, 0, 0, 1)"
             color="black"
             position="fixed"
             top="0"
@@ -32,50 +33,48 @@ const Navbar = () => {
             >
                 <Box
                     onClick={() => navigate("/")}
-                    sx={{ "&:hover": { cursor: "pointer" } }} //sx: sudeo selector
+                    sx={{ "&:hover": { cursor: "pointer" } }} //sx: sudo selector
                     color={shades.secondary[500]}
                 >
-                    REACT ECOMMERCE
-                    <Box
-                        display="flex"
-                        justifyContent="space-between"
-                        columnGap="20px"
-                        zIndex="2"
+                    <h1>THE HOOD</h1>
+                </Box>
+                
+                <Box
+                    display="flex"
+                    justifyContent="space-between"
+                    columnGap="30px"
+                    zIndex="2"
+                >
+                    <IconButton >
+                        <SearchOutlined />
+                    </IconButton>
+
+                    <IconButton >
+                        <PersonOutline />
+                    </IconButton>
+                    <Badge
+                        badgeContent={cart.length}
+                        color="secondary"
+                        invisible={cart.length === 0} //don't show badge if nothing in cart
+                        sx={{
+                            "& .MuiBadge-badge": {
+                                right: 5,
+                                top: 5,
+                                padding: "0 4px",
+                                height: "14px",
+                                minWidth: "13px",
+                                // fontSize: '11px'
+                            },
+                        }}
                     >
-                        <IconButton sx={{ color: "black" }}>
-                            <SearchOutlined />
+                        <IconButton onClick={() => dispatch(setIsCartOpen({}))} >
+                            <ShoppingBagOutlined />
                         </IconButton>
+                    </Badge>
 
-                        <IconButton sx={{ color: "black" }}>
-                            <PersonOutline />
-                        </IconButton>
-                        <Badge
-                            badgeContent={cart.length}
-                            color="secondary"
-                            invisible={cart.length === 0} //don't show any badge if nothing in cart
-                            sx={{
-                                "& .MuiBadge-badge": {
-                                    right: 5,
-                                    top: 5,
-                                    padding: "0 4px",
-                                    height: "14px",
-                                    minWidth: "13px",
-                                },
-                            }}
-                        >
-                            <IconButton
-                                onClick={() => dispatch(setIsCartOpen({}))}
-                                sx={{ color: "black" }}
-                            >
-                                <ShoppingBagOutlined />
-                            </IconButton>
-                        </Badge>
-
-                        <IconButton sx={{ color: "black" }}>
-                            <MenuOutlined />
-                        </IconButton>
-
-                    </Box>
+                    <IconButton >
+                        <MenuOutlined />
+                    </IconButton>
                 </Box>
             </Box>
         </Box>
