@@ -31,24 +31,30 @@ const ShoppingList = () => {
     getItems();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const topRatedItems = items.filter(
-    (item) => item.attributes.category === "topRated"
-  );
   const newArrivalsItems = items.filter(
     (item) => item.attributes.category === "newArrivals"
   );
-  const bestSellersItems = items.filter(
-    (item) => item.attributes.category === "bestSellers"
+  const braceletsItems = items.filter(
+    (item) => item.attributes.category === "bracelets"
+  );
+  const earringsItems = items.filter(
+    (item) => item.attributes.category === "earrings"
+  );
+  const necklacesItems = items.filter(
+    (item) => item.attributes.category === "necklaces"
+  );
+  const ringsItems = items.filter(
+    (item) => item.attributes.category === "rings"
   );
 
   return (
     <Box width="80%" margin="80px auto">
       <Typography variant="h3" textAlign="center">
-        Our Featured <b>Products</b>
+        Featured <b>Products</b>
       </Typography>
       <Tabs
-        textColor="primary"
-        indicatorColor="primary"
+        textColor="secondary"
+        indicatorColor="secondary"
         value={value}
         onChange={handleChange}
         centered
@@ -62,8 +68,10 @@ const ShoppingList = () => {
       >
         <Tab label="ALL" value="all" />
         <Tab label="NEW ARRIVALS" value="newArrivals" />
-        <Tab label="BEST SELLERS" value="bestSellers" />
-        <Tab label="TOP RATED" value="topRated" />
+        <Tab label="Bracelets" value="bracelets" />
+        <Tab label="Earrings" value="earrings" />
+        <Tab label="Necklaces" value="necklaces" />
+        <Tab label="Rings" value="rings" />
       </Tabs>
 
       {/* SHOP ITEMS */}
@@ -83,12 +91,20 @@ const ShoppingList = () => {
           newArrivalsItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === "bestSellers" &&
-          bestSellersItems.map((item) => (
+        {value === "earrings" &&
+          earringsItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === "topRated" &&
-          topRatedItems.map((item) => (
+        {value === "bracelets" &&
+          braceletsItems.map((item) => (
+            <Item item={item} key={`${item.name}-${item.id}`} />
+          ))}
+        {value === "necklaces" &&
+          necklacesItems.map((item) => (
+            <Item item={item} key={`${item.name}-${item.id}`} />
+          ))}
+        {value === "rings" &&
+          ringsItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
       </Box>
