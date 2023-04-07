@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import { shades } from "../../theme";
 
 function Footer() {
@@ -26,13 +26,13 @@ function Footer() {
           >
             THE HOOD
           </Typography>
-          <div>
-          Nunc sed augue lacus viverra vitae congue eu. Eget magna fermentum iaculis eu. 
-          Turpis cursus in hac habitasse platea dictumst quisque sagittis purus. 
-          Auctor eu augue ut lectus. Amet facilisis magna etiam tempor. 
-          Purus semper eget duis at tellus at urna condimentum mattis. 
-          Sem nulla pharetra diam sit amet nisl. Nulla facilisi etiam dignissim eget diam.
-          </div>
+          <Typography>
+            Nunc sed augue lacus viverra vitae congue eu. Eget magna fermentum iaculis eu.
+            Turpis cursus in hac habitasse platea dictumst quisque sagittis purus.
+            Auctor eu augue ut lectus. Amet facilisis magna etiam tempor.
+            Purus semper eget duis at tellus at urna condimentum mattis.
+            Sem nulla pharetra diam sit amet nisl. Nulla facilisi etiam dignissim eget diam.
+          </Typography>
         </Box>
 
         <Box>
