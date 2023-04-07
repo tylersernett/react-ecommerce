@@ -98,13 +98,13 @@ const ItemDetails = () => {
             </Box>
             <Button
               sx={{
-                backgroundColor: "#222222",
+                backgroundColor: shades.neutral[700],
                 color: "white",
                 borderRadius: 0,
                 minWidth: "150px",
                 padding: "10px 40px",
                 "&:hover": {
-                  color: 'black',
+                  backgroundColor: shades.secondary[500],
                 }
               }}
               onClick={() => dispatch(addToCart({ item: { ...item, count } }))}
