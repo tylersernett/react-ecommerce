@@ -39,3 +39,13 @@ function App() {
 }
 
 export default App;
+
+//TODO: sort by price
+//TODO: mobile menu
+//modular: multiple vs singular items
+//color correct photos?
+//adding two of same id: same stack (instead of two entries into cart)
+//gallery
+//virtual tour
+//TODO: prevent checkout button if cartsize = 0
+//TODO: fix highlights w dark bg
