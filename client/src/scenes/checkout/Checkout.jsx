@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Box, Button, Stepper, Step, StepLabel } from "@mui/material";
 import { Formik } from "formik";
-import { useState } from "react";
+import { createContext, useState } from "react";
 import * as yup from "yup";
 import { shades } from "../../theme";
 import Payment from "./Payment";
@@ -70,23 +70,20 @@ const Checkout = () => {
         </Step>
       </Stepper>
       <Box>
-        <Formik
-          onSubmit={handleFormSubmit}
-          initialValues={initialValues}
-          validationSchema={checkoutSchema[activeStep]}
-        >
+        <Formik onSubmit={handleFormSubmit} initialValues={initialValues} validationSchema={checkoutSchema[activeStep]}>
           {/*      ======CHECKOUT=====       */}
-          {/*      ↳Payment  ↳Shipping      */}                    
+          {/*      ↳Payment  ↳Shipping      */}
           {/*                    ↳address  */}
           {/* payment:values, touched, errors, handleBlur, handleChange             shipping:values, touched, errors, handleChange, handleBlur, setFieldValue */}
           {/* address: __type__, values, touched, errors, handleBlur, handleChange */}
           {({ values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue }) => (
+            //000 <CheckoutContext.Provider value={{values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue}}>
             <form onSubmit={handleSubmit}>
               {isFirstStep && (
                 <Shipping values={values} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} setFieldValue={setFieldValue} />
               )}
               {isSecondStep && (
-                <Payment values={values} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange} setFieldValue={setFieldValue} />
+                <Payment values={values} errors={errors} touched={touched} handleBlur={handleBlur} handleChange={handleChange}/>
               )}
               <Box display="flex" justifyContent="space-between" gap="50px">
                 {!isFirstStep && (
@@ -123,6 +120,7 @@ const Checkout = () => {
                 </Button>
               </Box>
             </form>
+            //000 </CheckoutContext.Provider>
           )}
         </Formik>
       </Box>
@@ -155,6 +153,8 @@ const initialValues = {
   email: "",
   phoneNumber: "",
 };
+
+//000 export const CheckoutContext = createContext();
 
 const checkoutSchema = [
   //FIRST STEP
