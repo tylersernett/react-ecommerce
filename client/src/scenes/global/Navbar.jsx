@@ -15,6 +15,9 @@ import { useState } from 'react';
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const pages = ['Shop', 'Cart', 'Events', 'Gallery', 'Appointments'];
+
+//const pagesObj = [{title:'Shop', behavior: dispatch(setIsCartOpen({})) }]
+
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const isMedScreen = useMediaQuery("(min-width:900px)");
@@ -37,22 +40,20 @@ const Navbar = () => {
                     <Toolbar disableGutters width="80%"
                         margin="auto"
                         display="flex"
-                        // justifycontent="space-between"
                         alignitems="center">
-                        {/* MD+ */}
+
+                        {/* DESKTOP============================================= */}
                         <Typography
                             variant={isMedScreen ? "h1" : isSmlScreen ? "h2" : "h3"}
-                            noWrap
-                            component="a"
-                            href="/"
+                            onClick={() => navigate("/")}
                             sx={{
                                 mr: 2,
                                 display: 'flex',
-                                flexGrow: 1,
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
                                 color: shades.secondary[500],
                                 textDecoration: 'none',
+                                cursor: 'pointer',
                             }}
                         >
                             THE HOOD
@@ -94,7 +95,7 @@ const Navbar = () => {
                                 ) : (
                                     <Button
                                         key={page}
-                                        onClick={handleCloseNavMenu}
+                                        // onClick={handleCloseNavMenu}
                                         sx={{ my: 2, color: 'white', display: 'block' }}
                                     >
                                         {page}
@@ -102,24 +103,8 @@ const Navbar = () => {
                                 )
                             ))}
                         </Box>
-                        {/* XS */}
-                        {/* <Typography
-                            variant="h2"
-                            noWrap
-                            component="a"
-                            href=""
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'flex', md: 'none' },
-                                flexGrow: 1,
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: shades.secondary[500],
-                                textDecoration: 'none',
-                            }}
-                        >
-                            THE HOOD
-                        </Typography> */}
+
+                        {/* MOBILE============================================= */}
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'none' } }}
                             display="flex"
                             justifyContent="right"
@@ -155,7 +140,9 @@ const Navbar = () => {
                                 }}
                             >
                                 {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                    <MenuItem key={page}
+                                        onClick={handleCloseNavMenu}
+                                    >
                                         <Typography textAlign="center">{page}</Typography>
                                     </MenuItem>
                                 ))}
