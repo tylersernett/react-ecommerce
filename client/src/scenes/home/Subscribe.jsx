@@ -8,9 +8,7 @@ const Subscribe = () => {
 
   return (
     <Box width="80%" margin="80px auto" textAlign="center">
-      <IconButton>
-        <MarkEmailReadOutlinedIcon fontSize="large" />
-      </IconButton>
+      <MarkEmailReadOutlinedIcon fontSize="large" />
       <Typography variant="h3" color={shades.secondary[500]}>Subscribe To Our Newsletter</Typography>
       <Typography>
         and receive a $20 coupon for your first order when you checkout
