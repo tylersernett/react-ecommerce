@@ -159,47 +159,4 @@ const CartMenu = () => {
     )
 }
 
-export default CartMenu
-
-/*
-import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-
-export default function TemporaryDrawer() {
-    const [drawerOpen, setDrawerOpen] = React.useState(false);
-
-    const toggleDrawer = (bool) => (event) => {
-        if (
-            event.type === "keydown" &&
-            (event.key === "Tab" || event.key === "Shift")
-        ) {
-            setDrawerOpen(false);
-            return;
-        }
-
-        setDrawerOpen(bool);
-    };
-
-    const drawerContent = () => (
-        <Box
-            sx={{ width: 250 }}
-            role="presentation"
-            onClick={toggleDrawer(false)}
-            onKeyDown={toggleDrawer(false)}
-        >
-            DRAWER CONTENTS HERE
-        </Box>
-    );
-
-    return (
-        <>
-            <Button onClick={toggleDrawer(true)}>{"right"}</Button>
-            <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
-                {drawerContent()}
-            </Drawer>
-        </>
-    );
-}
-
-instead of changing display:none, change drawer {open} prop
-*/
+export default CartMenu;
