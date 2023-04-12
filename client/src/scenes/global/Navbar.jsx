@@ -17,8 +17,6 @@ import { NavLink } from 'react-router-dom';
 
 const pages = ['Shop', 'Events', 'Gallery', 'Appointments'];
 
-//const pagesObj = [{title:'Shop', behavior: dispatch(setIsCartOpen({})) }]
-
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const isMedScreen = useMediaQuery("(min-width:900px)");
@@ -33,6 +31,9 @@ const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart.cart); //state.sliceName.prop
+    const totalCount = cart.reduce((total, item) => { 
+        return total + item.count 
+    }, 0);
 
     return (
         <>
@@ -134,7 +135,7 @@ const Navbar = () => {
                          {/* CART============================================= */}
                         <Box>
                             <Badge
-                                badgeContent={cart.length}
+                                badgeContent={totalCount}
                                 color="secondary"
                                 invisible={cart.length === 0} //don't show badge if nothing in cart
                                 onClick={() => dispatch(setIsCartOpen({}))} //onClick also applies to child element, so keep it up here
