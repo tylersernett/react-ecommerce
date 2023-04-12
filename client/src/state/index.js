@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     isCartOpen: false,
@@ -15,12 +15,21 @@ export const cartSlice = createSlice({
         },
 
         addToCart: (state, action) => {
-            console.log(action.payload.item)
+            //ensure positive quantity
             if (action.payload.item.count > 0) {
-                //check that item is not already in cart
-                state.cart = [...state.cart, action.payload.item]; //edge: duplicate items?
+                //if item already exists, add to existing count
+                const isItemInCart = state.cart.find((item) => item.id === action.payload.item.id);
+                if (isItemInCart) {
+                    state.cart.map((item) => {
+                        if (item.id === action.payload.item.id) {
+                            item.count += action.payload.item.count;
+                        }
+                        return item;
+                    });
+                } else { //add new item to cart
+                    state.cart = [...state.cart, action.payload.item];
+                }
             }
-            //else, increase the count of existing item
         },
 
         removeFromCart: (state, action) => {
@@ -58,6 +67,6 @@ export const {
     increaseCount,
     decreaseCount,
     setIsCartOpen,
-  } = cartSlice.actions;
-  
-  export default cartSlice.reducer;
+} = cartSlice.actions;
+
+export default cartSlice.reducer;
