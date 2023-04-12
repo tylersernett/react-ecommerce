@@ -13,8 +13,9 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { NavLink } from 'react-router-dom';
 
-const pages = ['Shop', 'Cart', 'Events', 'Gallery', 'Appointments'];
+const pages = ['Shop', 'Events', 'Gallery', 'Appointments'];
 
 //const pagesObj = [{title:'Shop', behavior: dispatch(setIsCartOpen({})) }]
 
@@ -35,19 +36,18 @@ const Navbar = () => {
 
     return (
         <>
-            <AppBar position="fixed" zIndex="2">
+            <AppBar position="fixed"  >
                 <Container maxWidth="xl">
                     <Toolbar disableGutters width="80%"
                         margin="auto"
                         display="flex"
                         alignitems="center">
 
-                        {/* DESKTOP============================================= */}
+                        {/* TITLE============================================= */}
                         <Typography
                             variant={isMedScreen ? "h1" : isSmlScreen ? "h2" : "h3"}
                             onClick={() => navigate("/")}
                             sx={{
-                                mr: 2,
                                 display: 'flex',
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
@@ -58,53 +58,30 @@ const Navbar = () => {
                         >
                             THE HOOD
                         </Typography>
+                        
+                        {/* DESKTOP NAV============================================= */}
                         <Box
                             pr='20px'
                             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}
                             display="flex"
                             justifyContent="right"
                             columnGap={isSmlScreen ? "30px" : "2px"}
-                            zIndex="2">
+                            zIndex="2"
+                        >
                             {pages.map((page) => (
-                                page === 'Cart' ? (
-                                    <Badge
-                                        key={page}
-                                        badgeContent={cart.length}
-                                        color="secondary"
-                                        invisible={cart.length === 0} //don't show badge if nothing in cart
-                                        sx={{
-                                            "& .MuiBadge-badge": {
-                                                right: 5,
-                                                top: 25,
-                                                padding: "0 4px",
-                                                height: "14px",
-                                                minWidth: "13px",
-                                                // fontSize: '11px'
-                                            },
-                                        }}
-                                    >
-                                        <Button
-
-                                            onClick={() => dispatch(setIsCartOpen({}))}
-                                            // onClick={handleCloseNavMenu}
-                                            sx={{ my: 2, color: 'white', display: 'block' }}
-                                        >
-                                            {page}
-                                        </Button>
-                                    </Badge>
-                                ) : (
+                                <NavLink key={page} to={`/${page}`} style={{ textDecoration: 'none', color: 'white' }}>
                                     <Button
-                                        key={page}
+
                                         // onClick={handleCloseNavMenu}
                                         sx={{ my: 2, color: 'white', display: 'block' }}
                                     >
                                         {page}
                                     </Button>
-                                )
+                                </NavLink>
                             ))}
                         </Box>
 
-                        {/* MOBILE============================================= */}
+                        {/* MOBILE NAV============================================= */}
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'none' } }}
                             display="flex"
                             justifyContent="right"
@@ -142,11 +119,41 @@ const Navbar = () => {
                                 {pages.map((page) => (
                                     <MenuItem key={page}
                                         onClick={handleCloseNavMenu}
+                                    // onClick={navigate(`/${page}`)}
                                     >
-                                        <Typography textAlign="center">{page}</Typography>
+                                        {/* <Button align="center" width='100%' onClick={} > */}
+                                        <NavLink to={`/${page}`} style={{ textDecoration: 'none', color: 'white', width: '100%' }}>
+                                            {page}
+                                        </NavLink>
+                                        {/* </Button> */}
                                     </MenuItem>
                                 ))}
                             </Menu>
+                        </Box>
+
+                         {/* CART============================================= */}
+                        <Box>
+                            <Badge
+                                badgeContent={cart.length}
+                                color="secondary"
+                                invisible={cart.length === 0} //don't show badge if nothing in cart
+                                onClick={() => dispatch(setIsCartOpen({}))} //onClick also applies to child element, so keep it up here
+                                sx={{
+                                    "& .MuiBadge-badge": {
+                                        right: 10,
+                                        top: 25,
+                                        padding: "0 4px",
+                                        height: "14px",
+                                        minWidth: "13px",
+                                        cursor: 'pointer',
+                                        // fontSize: '11px'
+                                    },
+                                }}
+                            >
+                                <IconButton  >
+                                    <ShoppingBagOutlined />
+                                </IconButton>
+                            </Badge>
                         </Box>
                     </Toolbar>
                 </Container>
