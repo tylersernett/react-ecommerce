@@ -1,19 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Badge, Box, IconButton, Typography } from "@mui/material";
-import { PersonOutline, ShoppingBagOutlined, MenuOutlined, SearchOutlined, } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate, NavLink } from "react-router-dom";
+import { Badge, Box, IconButton, Typography, AppBar, Container, Toolbar, Menu, Button, MenuItem, useMediaQuery } from "@mui/material";
+import { ShoppingBagOutlined } from "@mui/icons-material";
+import MenuIcon from '@mui/icons-material/Menu';
 import { shades } from "../../theme";
 import { setIsCartOpen } from "../../state";
-import AppBar from '@mui/material/AppBar';
-import Container from '@mui/material/Container';
-import Toolbar from '@mui/material/Toolbar';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import { useState } from 'react';
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { NavLink } from 'react-router-dom';
 
 const pages = ['Shop', 'Events', 'Gallery', 'Appointments'];
 
