@@ -42,13 +42,18 @@ const CartMenu = () => {
 
     return (
         <Drawer anchor="right" open={isCartOpen} onClose={toggleDrawer(false)}>
-            <Box padding="30px" overflow="auto" height="100%">
+            <Box padding="20px" overflow="auto" height="100%"> {/*  minWidth='380px' */}
                 {/* HEADER */}
-                <FlexBox mb="15px">
-                    <Typography variant="h3" >SHOPPING BAG ({cart.length})</Typography>
-                    <IconButton onClick={() => dispatch(setIsCartOpen({}))}>
+                <FlexBox mb="15px" sx={{display: 'flex', flexDirection: 'row-reverse'}}> {/* reverse direction so X is always right*/}
+                    <IconButton   onClick={() => dispatch(setIsCartOpen({}))}>
                         <CloseIcon />
                     </IconButton>
+                    {cart.length > 0 ?
+                        (
+                            <Typography variant="h3" color={shades.secondary[600]}>SHOPPING BAG&nbsp;
+                                <span style={{ color: shades.neutral[500] }}>({cart.length})</span>
+                            </Typography>
+                        ) : "" }
                 </FlexBox>
 
                 {/* CART LIST */}
@@ -56,8 +61,7 @@ const CartMenu = () => {
                     {cart.map((item) => (
                         <Box key={`${item.attributes.name}-${item.id}`}>
                             <FlexBox p="15px 0">
-                                <Box flex="1 1 40%">
-                                    {/* shrink:1, grow: 1 */}
+                                <Box flex="1 1 40%" >{/* shrink:1, grow: 1 */}
                                     <img
                                         alt={item?.name}
                                         width="123px"
@@ -100,36 +104,55 @@ const CartMenu = () => {
                             <Divider />
                         </Box>
                     ))}
-
                 </Box>
 
-                {/* ACTIONS */}
+                {/* TOTAL & CHECKOUT */}
                 <Box m="20px 0">
-                    <FlexBox m="20px 0">
-                        <Typography fontWeight="bold" >SUBTOTAL</Typography>
-                        <Typography fontWeight="bold">${totalPrice}</Typography>
-                    </FlexBox>
-                    <Button
-                        sx={{
-                            backgroundColor: shades.secondary[600],
-                            color: 'white',
-                            borderRadius: 0,
-                            minWidth: "100%",
-                            padding: "20px 40px",
-                            fontWeight: "bold",
-                            m: "20px 0",
-                            "&:hover": {
-                                color: 'black',
-                                backgroundColor: shades.secondary[500],
-                            }
-                        }}
-                        onClick={() => {
-                            navigate("/checkout");
-                            dispatch(setIsCartOpen({}));
-                        }}
-                    >
-                        CHECKOUT
-                    </Button>
+                    {cart.length > 0 ?
+                        (
+                            <>
+                                <FlexBox m="20px 0">
+                                    <Typography fontWeight="bold" >SUBTOTAL</Typography>
+                                    <Typography fontWeight="bold">${totalPrice}</Typography>
+                                </FlexBox>
+                                <Button
+                                    sx={{
+                                        backgroundColor: shades.secondary[600],
+                                        color: 'white',
+                                        borderRadius: 0,
+                                        minWidth: "100%",
+                                        padding: "20px 40px",
+                                        fontWeight: "bold",
+                                        m: "20px 0",
+                                        "&:hover": {
+                                            color: 'black',
+                                            backgroundColor: shades.secondary[500],
+                                        }
+                                    }}
+                                    onClick={() => {
+                                        navigate("/checkout");
+                                        dispatch(setIsCartOpen({}));
+                                    }}
+                                >
+                                    CHECKOUT
+                                </Button>
+                            </>
+                        ) : (
+                            <Button variant="outlined"
+                                sx={{
+                                    // backgroundColor: shades.neutral[700],
+                                    color: 'white',
+                                    borderRadius: 0,
+                                    border: '1px solid black',
+                                    minWidth: "100%",
+                                    padding: "20px 40px",
+                                    fontWeight: "bold",
+                                    m: "20px 0",
+                                }}>
+                                Your Bag Is Empty
+                            </Button>
+                        )
+                    }
                 </Box>
             </Box>
         </Drawer>
