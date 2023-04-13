@@ -75,7 +75,7 @@ const CartMenu = () => {
                                             {item.attributes.name}
                                         </Typography>
                                         <IconButton onClick={() => dispatch(removeFromCart({ id: item.id }))}>
-                                            <CloseIcon />
+                                            <CloseIcon fontSize='small'/>
                                         </IconButton>
                                     </FlexBox>
                                     <Typography>{item.attributes.shortDescription}</Typography>
