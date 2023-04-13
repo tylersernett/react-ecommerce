@@ -13,7 +13,7 @@ const importAll = (r) =>
   }, {});
 
 export const heroTextureImports = importAll(
-  require.context("../../assets", false, /\.(png|jpe?g|svg)$/)
+  require.context("../../assets/heros", false, /\.(png|jpe?g|svg)$/)
 );
 // 
 
@@ -21,6 +21,7 @@ const MainCarousel = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   return (
     <Carousel
+    autoPlay={true}
       infiniteLoop={true}
       showThumbs={false}
       showIndicators={false}
