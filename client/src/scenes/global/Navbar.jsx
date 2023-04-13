@@ -1,84 +1,155 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Badge, Box, IconButton } from "@mui/material";
-import { PersonOutline, ShoppingBagOutlined, MenuOutlined, SearchOutlined, } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate, NavLink } from "react-router-dom";
+import { Badge, Box, IconButton, Typography, AppBar, Container, Toolbar, Menu, Button, MenuItem, useMediaQuery } from "@mui/material";
+import { ShoppingBagOutlined } from "@mui/icons-material";
+import MenuIcon from '@mui/icons-material/Menu';
 import { shades } from "../../theme";
 import { setIsCartOpen } from "../../state";
 
+const pages = ['Shop', 'Events', 'Gallery', 'Appointments'];
+
 const Navbar = () => {
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const isMedScreen = useMediaQuery("(min-width:900px)");
+    const isSmlScreen = useMediaQuery("(min-width:800px)");
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart.cart); //state.sliceName.prop
+    const totalCount = cart.reduce((total, item) => {
+        return total + item.count
+    }, 0);
 
     return (
-        <Box
-            display="flex"
-            alignItems="center"
-            width="100%"
-            height="60px"
-            // backgroundColor="rgba(255, 255, 255, 0.5)"
-            backgroundColor="rgba(0, 0, 0, 1)"
-            color="black"
-            position="fixed"
-            top="0"
-            left="0"
-            zIndex="1"
-        >
-            <Box
-                width="80%"
-                margin="auto"
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-            >
-                <Box
-                    onClick={() => navigate("/")}
-                    sx={{ "&:hover": { cursor: "pointer" } }} //sx: sudo selector
-                    color={shades.secondary[500]}
-                >
-                    <h1>THE HOOD</h1>
-                </Box>
-                
-                <Box
+        <AppBar position="fixed"  >
+            <Container maxWidth="xl">
+                <Toolbar disableGutters width="80%"
+                    margin="auto"
                     display="flex"
-                    justifyContent="space-between"
-                    columnGap="30px"
-                    zIndex="2"
-                >
-                    <IconButton >
-                        <SearchOutlined />
-                    </IconButton>
+                    alignitems="center">
 
-                    <IconButton >
-                        <PersonOutline />
-                    </IconButton>
-                    <Badge
-                        badgeContent={cart.length}
-                        color="secondary"
-                        invisible={cart.length === 0} //don't show badge if nothing in cart
+                    {/* TITLE============================================= */}
+                    <Typography
+                        variant={isMedScreen ? "h1" : isSmlScreen ? "h2" : "h3"}
+                        onClick={() => navigate("/")}
                         sx={{
-                            "& .MuiBadge-badge": {
-                                right: 5,
-                                top: 5,
-                                padding: "0 4px",
-                                height: "14px",
-                                minWidth: "13px",
-                                // fontSize: '11px'
-                            },
+                            display: 'flex',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: shades.secondary[500],
+                            textDecoration: 'none',
+                            cursor: 'pointer',
                         }}
                     >
-                        <IconButton onClick={() => dispatch(setIsCartOpen({}))} >
-                            <ShoppingBagOutlined />
-                        </IconButton>
-                    </Badge>
+                        THE HOOD
+                    </Typography>
 
-                    <IconButton >
-                        <MenuOutlined />
-                    </IconButton>
-                </Box>
-            </Box>
-        </Box>
+                    {/* DESKTOP NAV============================================= */}
+                    <Box
+                        pr='20px'
+                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}
+                        display="flex"
+                        justifyContent="right"
+                        columnGap={isSmlScreen ? "30px" : "2px"}
+                        zIndex="2"
+                    >
+                        {pages.map((page) => (
+                            <NavLink key={page} to={`/${page}`} style={{ textDecoration: 'none', color: 'white' }}>
+                                <Button
+                                    // onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                >
+                                    {page}
+                                </Button>
+                            </NavLink>
+                        ))}
+                    </Box>
+
+                    {/* MOBILE NAV============================================= */}
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', sm: 'none' } }}
+                        display="flex"
+                        justifyContent="right"
+                        columnGap="30px"
+                        zIndex="2"
+                    >
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenu}
+                            color="inherit"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{
+                                display: { xs: 'block', sm: 'none' },
+                            }}
+                        >
+                            {pages.map((page) => (
+                                <MenuItem key={page}
+                                    onClick={handleCloseNavMenu}
+                                // onClick={navigate(`/${page}`)}
+                                >
+                                    {/* <Button align="center" width='100%' onClick={} > */}
+                                    <NavLink to={`/${page}`} style={{ textDecoration: 'none', color: 'white', width: '100%' }}>
+                                        {page}
+                                    </NavLink>
+                                    {/* </Button> */}
+                                </MenuItem>
+                            ))}
+                        </Menu>
+                    </Box>
+
+                    {/* CART============================================= */}
+                    <Box>
+                        <Badge
+                            badgeContent={totalCount}
+                            color="secondary"
+                            invisible={cart.length === 0} //don't show badge if nothing in cart
+                            onClick={() => dispatch(setIsCartOpen({}))} //onClick also applies to child element, so keep it up here
+                            sx={{
+                                "& .MuiBadge-badge": {
+                                    right: 10,
+                                    top: 25,
+                                    padding: "0 4px",
+                                    height: "14px",
+                                    minWidth: "13px",
+                                    cursor: 'pointer',
+                                    // fontSize: '11px'
+                                },
+                            }}
+                        >
+                            <IconButton  >
+                                <ShoppingBagOutlined />
+                            </IconButton>
+                        </Badge>
+                    </Box>
+                </Toolbar>
+            </Container>
+        </AppBar>
     )
 }
 
-export default Navbar
+export default Navbar;

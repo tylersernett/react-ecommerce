@@ -7,7 +7,7 @@ function Footer() {
     palette: { neutral },
   } = useTheme();
   return (
-    <Box marginTop="70px" padding="40px 0" backgroundColor={shades.primary[900]}>
+    <Box marginTop="70px" padding="40px 0" backgroundColor={shades.neutral[900]}>
       <Box
         width="80%"
         margin="auto"

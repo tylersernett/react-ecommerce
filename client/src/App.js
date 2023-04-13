@@ -7,6 +7,9 @@ import Navbar from "./scenes/global/Navbar";
 import Home from "./scenes/home/Home";
 import ItemDetails from "./scenes/itemDetails/ItemDetails";
 import Footer from "./scenes/global/Footer";
+import Appointments from "./scenes/appointments/Appointments";
+import Events from "./scenes/events/Events";
+import Gallery from "./scenes/gallery/Gallery";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -27,9 +30,13 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="shop" element={<Home />} />
           <Route path="item/:itemId" element={<ItemDetails />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="checkout/success" element={<Confirmation />} />
+          <Route path="appointments" element={<Appointments />} />
+          <Route path="events" element={<Events />} />
+          <Route path="gallery" element={<Gallery />} />
         </Routes>
         <CartMenu />
         <Footer />
@@ -41,11 +48,8 @@ function App() {
 export default App;
 
 //TODO: sort by price
-//TODO: mobile menu
 //modular: multiple vs singular items
 //color correct photos?
-//adding two of same id: same stack (instead of two entries into cart)
 //gallery
 //virtual tour
-//TODO: prevent checkout button if cartsize = 0
 //TODO: fix highlights w dark bg
