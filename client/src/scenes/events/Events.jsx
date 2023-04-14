@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography, IconButton, useMediaQuery } from "@mui/material";
+import { Box, Typography, IconButton, useMediaQuery, Divider } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
@@ -17,15 +17,17 @@ export const heroTextureImports = importAll(
 );
 
 const Events = () => {
-  const isNonMobile = useMediaQuery("(min-width:600px)");
+  const isNonMobile = useMediaQuery("(min-width:768px)");
   return (
     <Box m="100px auto" width="80%" >
-      <Typography fontSize='1rem'>
-        We know sometimes there's nothing like enjoying an evening out in the back yard, and we've designed this space with our community in mind. Feel free to browse the images below and get a sense of the back yard we've created...
+      <Box width={isNonMobile ? '560px' : '300px'} mx='auto'>
+      <Typography fontSize='1rem' >
+        We know sometimes there's nothing like enjoying an evening out in the back yard, and we've designed this space with our community in mind.
         <br /><br />
         Have an event you think our space would be perfect for? Contact us and lets talk about what we can do.
+        <br /><br />
       </Typography>
-
+      </Box>
       <Carousel
         autoPlay={true}
         infiniteLoop={true}
