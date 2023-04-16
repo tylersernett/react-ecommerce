@@ -3,9 +3,8 @@ import { Box, Typography, useMediaQuery } from "@mui/material";
 import { shades } from "../../theme";
 
 function Footer() {
-  const {
-    palette: { neutral },
-  } = useTheme();
+  // const { palette: { neutral }, } = useTheme();
+
   return (
     <Box marginTop="70px" padding="40px 0" backgroundColor={shades.neutral[900]}>
       <Box
@@ -17,57 +16,92 @@ function Footer() {
         rowGap="30px"
         columnGap="clamp(20px, 30px, 40px)"
       >
-        <Box width="clamp(20%, 30%, 40%)">
-          <Typography
-            variant="h4"
-            fontWeight="bold"
-            mb="30px"
-            color={shades.secondary[500]}
-          >
-            THE HOOD
-          </Typography>
-          <Typography>
-            Nunc sed augue lacus viverra vitae congue eu. Eget magna fermentum iaculis eu.
-            Turpis cursus in hac habitasse platea dictumst quisque sagittis purus.
-            Auctor eu augue ut lectus. Amet facilisis magna etiam tempor.
-            Purus semper eget duis at tellus at urna condimentum mattis.
-            Sem nulla pharetra diam sit amet nisl. Nulla facilisi etiam dignissim eget diam.
-          </Typography>
-        </Box>
 
-        <Box>
-          <Typography variant="h4" fontWeight="bold" mb="30px">
-            About Us
-          </Typography>
-          <Typography mb="30px">Careers</Typography>
-          <Typography mb="30px">Our Stores</Typography>
-          <Typography mb="30px">Terms & Conditions</Typography>
-          <Typography mb="30px">Privacy Policy</Typography>
-        </Box>
+        <Box sx={{
+          display: 'grid',
+          gridTemplateColumns: '2fr 1fr 1fr',
+          gridGap: '30px',
+          columnGap: "60px",
+          // padding: '20px',
+          color: '#fff',
+          '@media (max-width: 992px)': {
+            gridTemplateColumns: '1fr 1fr',
+            gridTemplateRows: 'auto'
+          },
+          '@media (max-width: 576px)': {
+            gridTemplateColumns: '1fr',
+            gridTemplateRows: 'auto auto auto'
+          }
+        }}>
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            '@media (max-width: 992px)': {
+              gridColumnStart: '1',
+              gridColumnEnd: '3',
+            },
+            '@media (max-width: 576px)': {
+              gridColumnStart: '1',
+              gridColumnEnd: '2',
+            }
+          }}>
+            <Typography
+              variant="h4"
+              fontWeight="bold"
+              mb="10px"
+              color={shades.secondary[500]}
+            >
+              THE HOOD
+            </Typography>
+            <Typography variant="body1" sx={{ fontSize: '14px', lineHeight: 1.5, m: 0 }}>
+              Nunc sed augue lacus viverra vitae congue eu. Eget magna fermentum iaculis eu.
+              Turpis cursus in hac habitasse platea dictumst quisque sagittis purus.
+              Auctor eu augue ut lectus. Amet facilisis magna etiam tempor.
+            </Typography>
+          </Box>
 
-        <Box>
-          <Typography variant="h4" fontWeight="bold" mb="30px">
-            Customer Care
-          </Typography>
-          <Typography mb="30px">Help Center</Typography>
-          <Typography mb="30px">Track Your Order</Typography>
-          <Typography mb="30px">Corporate & Bulk Purchasing</Typography>
-          <Typography mb="30px">Returns & Refunds</Typography>
-        </Box>
-
-        <Box width="clamp(20%, 25%, 30%)">
-          <Typography variant="h4" fontWeight="bold" mb="30px">
-            Contact Us
-          </Typography>
-          <Typography mb="30px">
-            50 Fake Blvd, Albuquerque, NM 87109
-          </Typography>
-          <Typography mb="30px" sx={{ wordWrap: "break-word" }}>
-            Email: fake_email@gmail.com
-          </Typography>
-          <Typography mb="30px">(222) 333-4444</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Typography variant="h4" fontWeight="bold" mb="10px">
+              Customer Care
+            </Typography>
+            <Typography variant="body1" >
+              <Typography mb="10px">Help Center</Typography>
+              <Typography mb="10px">Track Your Order</Typography>
+              <Typography mb="10px">Returns & Refunds</Typography>
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column' ,}} >
+            <Typography variant="h4" fontWeight="bold" mb="10px">
+              Contact Us
+            </Typography>
+            <Typography variant="body1" mb="10px" >
+              3206 Harrelson St <br />
+              Las Cruces, NM 88005
+              </Typography>
+              <Typography variant="body1" mb="10px" >
+              (575) 621 - 0931 or<br />(575) 644 - 3372
+            </Typography>
+            <Box sx={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr 1fr',
+              // gridTemplateRows: 'repeat(3, 1fr)',
+              gap: '8px',
+            }}>
+              <Box >
+                <Typography >Friday</Typography>
+                <Typography >Saturday</Typography>
+                <Typography >Sunday</Typography>
+              </Box>
+              <Box >
+                <Typography >12–5p</Typography>
+                <Typography >12–5p</Typography>
+                <Typography >12–4p</Typography>
+              </Box>
+            </Box>
+          </Box>
         </Box>
       </Box>
+
     </Box>
   );
 }
