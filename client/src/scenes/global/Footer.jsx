@@ -49,6 +49,7 @@ function Footer() {
               variant="h4"
               fontWeight="bold"
               mb="10px"
+              letterSpacing= '.1rem'
               color={shades.secondary[500]}
             >
               THE HOOD
@@ -61,17 +62,18 @@ function Footer() {
           </Box>
 
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="h4" fontWeight="bold" mb="10px">
+            <Typography variant="h4" fontWeight="bold" mb="10px" color={shades.secondary[500]}>
               Customer Care
             </Typography>
             <Typography variant="body1" >
               <Typography mb="10px">Help Center</Typography>
               <Typography mb="10px">Track Your Order</Typography>
               <Typography mb="10px">Returns & Refunds</Typography>
+              <Typography mb="10px">Privacy Poliy</Typography>
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column' ,}} >
-            <Typography variant="h4" fontWeight="bold" mb="10px">
+            <Typography variant="h4" fontWeight="bold" mb="10px" color={shades.secondary[500]}>
               Contact Us
             </Typography>
             <Typography variant="body1" mb="10px" >
@@ -83,9 +85,8 @@ function Footer() {
             </Typography>
             <Box sx={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr 1fr',
-              // gridTemplateRows: 'repeat(3, 1fr)',
-              gap: '8px',
+              gridTemplateColumns: '1fr 7fr',
+              gap: '12px',
             }}>
               <Box >
                 <Typography >Friday</Typography>
