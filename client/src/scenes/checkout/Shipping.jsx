@@ -1,5 +1,7 @@
 import { Box, Checkbox, FormControlLabel, Typography } from "@mui/material";
 import AddressForm from "./AddressForm";
+import { shades } from "../../theme";
+import  { checkboxClasses } from "@mui/material/Checkbox";
 
 const Shipping = ({ values, touched, errors, handleChange, handleBlur, setFieldValue }) => {
     return (
@@ -31,6 +33,11 @@ const Shipping = ({ values, touched, errors, handleChange, handleBlur, setFieldV
                                     !values.shippingAddress.isSameAddress
                                 )
                             }
+                            sx={{
+                                [`&, &.${checkboxClasses.checked}`]: {
+                                  color: shades.secondary[600],
+                                },
+                              }}
                         />
                     }
                     label="Same for Shipping Address"
