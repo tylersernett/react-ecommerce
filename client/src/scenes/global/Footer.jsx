@@ -49,7 +49,7 @@ function Footer() {
               variant="h4"
               fontWeight="bold"
               mb="10px"
-              letterSpacing= '.1rem'
+              letterSpacing='.1rem'
               color={shades.secondary[500]}
             >
               THE HOOD
@@ -65,22 +65,20 @@ function Footer() {
             <Typography variant="h4" fontWeight="bold" mb="10px" color={shades.secondary[500]}>
               Customer Care
             </Typography>
-            <Typography variant="body1" >
-              <Typography mb="10px">Help Center</Typography>
-              <Typography mb="10px">Track Your Order</Typography>
-              <Typography mb="10px">Returns & Refunds</Typography>
-              <Typography mb="10px">Privacy Poliy</Typography>
-            </Typography>
+            <Typography mb="10px">Help Center</Typography>
+            <Typography mb="10px">Track Your Order</Typography>
+            <Typography mb="10px">Returns & Refunds</Typography>
+            <Typography mb="10px">Privacy Poliy</Typography>
           </Box>
-          <Box sx={{ display: 'flex', flexDirection: 'column' ,}} >
+          <Box sx={{ display: 'flex', flexDirection: 'column', }} >
             <Typography variant="h4" fontWeight="bold" mb="10px" color={shades.secondary[500]}>
               Contact Us
             </Typography>
             <Typography variant="body1" mb="10px" >
               3206 Harrelson St <br />
               Las Cruces, NM 88005
-              </Typography>
-              <Typography variant="body1" mb="10px" >
+            </Typography>
+            <Typography variant="body1" mb="10px" >
               (575) 621 - 0931 or<br />(575) 644 - 3372
             </Typography>
             <Box sx={{
