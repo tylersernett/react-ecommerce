@@ -64,7 +64,7 @@ const Item = ({ item, width }) => {
               onClick={() => {
                 dispatch(addToCart({ item: { ...item, count } }));
               }}
-              sx={{ backgroundColor: shades.primary[400], color: "white" ,"&:hover": {backgroundColor: shades.secondary[500],}}}
+              sx={{ backgroundColor: shades.primary[400], color: "white" ,"&:hover": {backgroundColor: shades.secondary[600],}}}
             >
               Add to Cart
             </Button>
