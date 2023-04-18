@@ -20,6 +20,9 @@ const Events = () => {
   const isNonMobile = useMediaQuery("(min-width:768px)");
   return (
     <Box m="100px auto" width="80%" >
+      <Typography variant='h2' textAlign='center' my='20px' color={shades.secondary[400]}>
+          Events at The Yard
+        </Typography>
       <Box width={isNonMobile ? '560px' : '300px'} mx='auto'>
       <Typography fontSize='1rem' >
         We know sometimes there's nothing like enjoying an evening out in the back yard, and we've designed this space with our community in mind.
