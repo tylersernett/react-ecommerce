@@ -50,6 +50,5 @@ export default App;
 //TODO: sort by price
 //modular: multiple vs singular items
 //color correct photos?
-//gallery
-//virtual tour
-//TODO: fix highlights w dark bg
+//TODO: checkout form validation
+//TODO: alter 'summer sale' boxes
