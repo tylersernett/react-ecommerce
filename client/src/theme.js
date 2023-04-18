@@ -38,7 +38,7 @@ export const shades = {
 
 export const theme = createTheme({
     palette: {
-        mode:'dark',
+        mode: 'dark',
         primary: {
             main: shades.primary[900],
         },
@@ -71,4 +71,20 @@ export const theme = createTheme({
             fontSize: 14,
         },
     },
+    components: {
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    '& label.Mui-focused': {
+                        color: shades.secondary[500], //font
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        "&.Mui-focused fieldset": {
+                            borderColor: shades.secondary[500] //border
+                        }
+                    }
+                }
+            }
+        },
+    }
 });
