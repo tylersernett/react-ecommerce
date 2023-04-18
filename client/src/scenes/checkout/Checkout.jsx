@@ -92,11 +92,14 @@ const Checkout = () => {
                     color="primary"
                     variant="contained"
                     sx={{
-                      backgroundColor: shades.primary[200],
+                      backgroundColor: shades.primary[400],
                       boxShadow: "none",
                       color: "white",
                       borderRadius: 0,
                       padding: "15px 40px",
+                      "&:hover": {
+                        backgroundColor: shades.primary[300],
+                      }
                     }}
                     onClick={() => setActiveStep(activeStep - 1)}
                   >
@@ -109,11 +112,14 @@ const Checkout = () => {
                   color="primary"
                   variant="contained"
                   sx={{
-                    backgroundColor: shades.primary[400],
+                    backgroundColor: shades.secondary[600],
                     boxShadow: "none",
                     color: "white",
                     borderRadius: 0,
                     padding: "15px 40px",
+                    "&:hover": {
+                      backgroundColor: shades.secondary[700],
+                    }
                   }}
                 >
                   {!isSecondStep ? "Next" : "Place Order"}
