@@ -25,7 +25,7 @@ const Shipping = ({ values, touched, errors, handleChange, handleBlur, setFieldV
                 <FormControlLabel
                     control={
                         <Checkbox
-                            defaultChecked
+                            defaultChecked={values.shippingAddress.isSameAddress}
                             value={values.shippingAddress.isSameAddress}
                             onChange={() =>
                                 setFieldValue(
