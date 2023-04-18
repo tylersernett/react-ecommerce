@@ -86,15 +86,29 @@ export const theme = createTheme({
                 }
             }
         },
-        MuiCheckBox: {
-            styleOverrides: {
-                root: {
-                    color: shades.neutral[500],
-                },
-                checked: {
-                    color: shades.secondary[400],
-                }
-            }
-        }
-    }
+        // MuiCheckBox: {
+        //     styleOverrides: {
+        //         root: {
+        //             color: shades.neutral[500],
+        //             "& .Mui-checked": {
+        //                 color: shades.secondary[400],
+        //             }
+
+        //         },
+        //         // checked: {
+        //         //     color: shades.secondary[400],
+        //         // },
+        //     }
+        // }
+    },
+    // overrides: {
+    //     MuiCheckbox: {
+    //         colorSecondary: {
+    //             color: '#ff0000',
+    //             '& .Mui-checked': {
+    //                 color: '#00ff00',
+    //             },
+    //         },
+    //     },
+    // },
 });
