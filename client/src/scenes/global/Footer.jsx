@@ -3,18 +3,12 @@ import { Box, Typography, useMediaQuery } from "@mui/material";
 import { shades } from "../../theme";
 
 function Footer() {
-  // const { palette: { neutral }, } = useTheme();
 
   return (
     <Box marginTop="70px" padding="40px 0" backgroundColor={shades.neutral[900]}>
       <Box
         width="80%"
         margin="auto"
-        display="flex"
-        justifyContent="space-between"
-        flexWrap="wrap"
-        rowGap="30px"
-        columnGap="clamp(20px, 30px, 40px)"
       >
 
         <Box sx={{
@@ -26,12 +20,13 @@ function Footer() {
           color: '#fff',
           '@media (max-width: 992px)': {
             gridTemplateColumns: '1fr 1fr',
-            gridTemplateRows: 'auto'
+            gridTemplateRows: 'auto',
+            columnGap: "30px",
           },
-          '@media (max-width: 576px)': {
-            gridTemplateColumns: '1fr',
-            gridTemplateRows: 'auto auto auto'
-          }
+          // '@media (max-width: 576px)': {
+          //   gridTemplateColumns: '1fr',
+          //   gridTemplateRows: 'auto auto auto'
+          // }
         }}>
           <Box sx={{
             display: 'flex',
@@ -40,10 +35,10 @@ function Footer() {
               gridColumnStart: '1',
               gridColumnEnd: '3',
             },
-            '@media (max-width: 576px)': {
-              gridColumnStart: '1',
-              gridColumnEnd: '2',
-            }
+            // '@media (max-width: 576px)': {
+            //   gridColumnStart: '1',
+            //   gridColumnEnd: '2',
+            // }
           }}>
             <Typography
               variant="h4"
