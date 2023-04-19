@@ -162,57 +162,59 @@ const initialValues = {
 
 //000 export const CheckoutContext = createContext();
 
+const phoneRegEx = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
+
 const checkoutSchema = [
   //FIRST STEP
   yup.object().shape({
     billingAddress: yup.object().shape({
-      firstName: yup.string().required("required"),
-      lastName: yup.string().required("required"),
-      country: yup.string().required("required"),
-      street1: yup.string().required("required"),
-      street2: yup.string(),
-      city: yup.string().required("required"),
-      state: yup.string().required("required"),
-      zipCode: yup.string().required("required"),
+      firstName: yup.string().required("required").max(50, 'entry too long'),
+      lastName: yup.string().required("required").max(50, 'entry too long'),
+      country: yup.string().required("required").max(50, 'entry too long'),
+      street1: yup.string().required("required").max(50, 'entry too long'),
+      street2: yup.string().max(50, 'entry too long'),
+      city: yup.string().required("required").max(50, 'entry too long'),
+      state: yup.string().required("required").max(50, 'entry too long'),
+      zipCode: yup.string().required("required").matches(/^[0-9]+$/, "digits only").min(5, 'not enough digits'),
     }),
     shippingAddress: yup.object().shape({
       isSameAddress: yup.boolean(),
       //only require validation on following fields (except street2) when isSameAddress is FALSE
       firstName: yup.string().when("isSameAddress", {
         is: false,
-        then: yup.string().required("required"),
+        then: yup.string().required("required").max(50, 'entry too long'),
       }),
       lastName: yup.string().when("isSameAddress", {
         is: false,
-        then: yup.string().required("required"),
+        then: yup.string().required("required").max(50, 'entry too long'),
       }),
       country: yup.string().when("isSameAddress", {
         is: false,
-        then: yup.string().required("required"),
+        then: yup.string().required("required").max(50, 'entry too long'),
       }),
       street1: yup.string().when("isSameAddress", {
         is: false,
-        then: yup.string().required("required"),
+        then: yup.string().required("required").max(50, 'entry too long'),
       }),
       street2: yup.string(),
       city: yup.string().when("isSameAddress", {
         is: false,
-        then: yup.string().required("required"),
+        then: yup.string().required("required").max(50, 'entry too long'),
       }),
       state: yup.string().when("isSameAddress", {
         is: false,
-        then: yup.string().required("required"),
+        then: yup.string().required("required").max(50, 'entry too long'),
       }),
       zipCode: yup.string().when("isSameAddress", {
         is: false,
-        then: yup.string().required("required"),
+        then: yup.string().required("required").matches(/^[0-9]+$/, "digits only").min(5, 'not enough digits'),
       }),
     }),
   }),
   //SECOND STEP
   yup.object().shape({
-    email: yup.string().required("required"),
-    phoneNumber: yup.string().required("required"),
+    email: yup.string().email('invalid email').required("required"),
+    phoneNumber: yup.string().required("required").matches(phoneRegEx, 'invalid phone number'),
   }),
 ];
 
