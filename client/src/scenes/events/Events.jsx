@@ -5,6 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { shades } from "../../theme";
+import ContactForm from '../../components/ContactForm';
 
 const importAll = (r) =>
   r.keys().reduce((accumulator, item) => {
@@ -21,15 +22,15 @@ const Events = () => {
   return (
     <Box m="100px auto" width="80%" >
       <Typography variant='h2' textAlign='center' my='20px' color={shades.secondary[400]}>
-          Events at The Yard
-        </Typography>
-      <Box width={isNonMobile ? '560px' : '300px'} mx='auto'>
-      <Typography fontSize='1rem' >
-        We know sometimes there's nothing like enjoying an evening out in the back yard, and we've designed this space with our community in mind.
-        <br /><br />
-        Have an event you think our space would be perfect for? Contact us and lets talk about what we can do.
-        <br /><br />
+        Events at The Yard
       </Typography>
+      <Box width={isNonMobile ? '560px' : '300px'} mx='auto'>
+        <Typography fontSize='1rem' >
+          We know sometimes there's nothing like enjoying an evening out in the back yard, and we've designed this space with our community in mind.
+          <br /><br />
+          Have an event you think our space would be perfect for? Contact us and lets talk about what we can do.
+          <br /><br />
+        </Typography>
       </Box>
       <Carousel
         autoPlay={true}
@@ -84,7 +85,9 @@ const Events = () => {
           </Box>
         ))}
       </Carousel>
-
+      <Box mt='50px' >
+        <ContactForm />
+      </Box>
     </Box>
   )
 }
