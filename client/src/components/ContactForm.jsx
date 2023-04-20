@@ -22,10 +22,34 @@ const ContactForm = () => {
         message: Yup.string().required('required')
     });
 
-    const handleSubmit = (values, { resetForm }) => {
+    // const handleSubmit = (values, { resetForm }) => {
+    const handleSubmit = (values) => {
         console.log(values);
-        // Replace with your own code to send the form data to a server or API
-        resetForm();
+        // fetch("https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f", {
+        //     method: "POST",
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json'
+        //     },
+        //     body: JSON.stringify(values)
+        // })
+        //     .then(response => response.json())
+        //     .then(data => console.log('d:', data))
+        //     .catch(error => console.log('e:', error));
+        // .then((html) => {
+        //     document.body.innerHTML = html
+        //   });
+        // .then(data => {
+        //     console.log('Success:', data);
+        //     // do something with the response data here
+        //     // window.open(data);
+        //     // window.open('https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f', '_blank');
+        //     // resetForm();
+        // })
+        // .catch(error => {
+        //     console.error('Error:', error);
+        //     // handle the error here
+        // });
     };
 
     return (
@@ -34,10 +58,15 @@ const ContactForm = () => {
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={handleSubmit}
+                // onSubmit={handleSubmit}
             >
                 {({ values, errors, touched }) => (
-                    <Form>
+                    <Form
+                        target="_blank"
+                        onSubmit={handleSubmit}
+                        action="https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f"
+                        method="POST"
+                    >
                         <Field
                             name='name'
                             as={TextField}
