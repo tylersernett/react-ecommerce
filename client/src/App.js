@@ -10,6 +10,7 @@ import Footer from "./scenes/global/Footer";
 import Appointments from "./scenes/appointments/Appointments";
 import Events from "./scenes/events/Events";
 import Gallery from "./scenes/gallery/Gallery";
+import Thankyou from "./scenes/events/Thankyou";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -37,6 +38,7 @@ function App() {
           <Route path="appointments" element={<Appointments />} />
           <Route path="events" element={<Events />} />
           <Route path="gallery" element={<Gallery />} />
+          <Route path="thankyou" element={<Thankyou />} />
         </Routes>
         <CartMenu />
         <Footer />

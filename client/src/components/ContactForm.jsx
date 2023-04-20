@@ -62,7 +62,7 @@ const ContactForm = () => {
             >
                 {({ values, errors, touched }) => (
                     <Form
-                        target="_blank"
+                        // target="_blank"
                         onSubmit={handleSubmit}
                         action="https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f"
                         method="POST"
@@ -109,6 +109,7 @@ const ContactForm = () => {
                             error={touched.message && Boolean(errors.message)}
                             helperText={touched.message && errors.message}
                         />
+                        <input type="hidden" name="_next" value="http://localhost:2000/thankyou"/>
                         <Button
                             type='submit'
                             variant='contained'
