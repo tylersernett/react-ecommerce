@@ -12,7 +12,7 @@ const ShoppingList = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState("all");
   const items = useSelector((state) => state.cart.items);
-  const isNonMobile = useMediaQuery("(min-width:600px)");
+  const isNonMobile = useMediaQuery("(min-width:645px)");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -31,9 +31,11 @@ const ShoppingList = () => {
     getItems();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const newArrivalsItems = items.filter(
-    (item) => item.attributes.category === "newArrivals"
-  );
+  //create arrays of items that match categories in the shop:
+
+  // const newArrivalsItems = items.filter(
+  //   (item) => item.attributes.category === "newArrivals"
+  // );
   const braceletsItems = items.filter(
     (item) => item.attributes.category === "bracelets"
   );
@@ -56,7 +58,8 @@ const ShoppingList = () => {
         textColor="secondary"
         indicatorColor="secondary"
         value={value}
-        onChange={handleChange}
+        // clicking a new tab changes the VALUE
+        onChange={handleChange} 
         centered
         TabIndicatorProps={{ sx: { display: isNonMobile ? "block" : "none" } }}
         sx={{
@@ -67,7 +70,7 @@ const ShoppingList = () => {
         }}
       >
         <Tab label="ALL" value="all" />
-        <Tab label="NEW ARRIVALS" value="newArrivals" />
+        {/* <Tab label="NEW ARRIVALS" value="newArrivals" /> */}
         <Tab label="Bracelets" value="bracelets" />
         <Tab label="Earrings" value="earrings" />
         <Tab label="Necklaces" value="necklaces" />
@@ -87,10 +90,10 @@ const ShoppingList = () => {
           items.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === "newArrivals" &&
+        {/* {value === "newArrivals" &&
           newArrivalsItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
-          ))}
+          ))} */}
         {value === "earrings" &&
           earringsItems.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
