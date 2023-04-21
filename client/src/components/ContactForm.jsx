@@ -53,8 +53,8 @@ const ContactForm = () => {
     };
 
     return (
-        <Box gap='15px'>
-            <Typography variant='h3'>Contact Form</Typography>
+        <Box>
+            <Typography variant='h3' color={shades.secondary[400]}>Contact Form</Typography>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
