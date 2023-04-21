@@ -74,7 +74,7 @@ function Footer() {
               Las Cruces, NM 88005
             </Typography>
             <Typography variant="body1" mb="10px" >
-              (575) 621 - 0931 or<br />(575) 644 - 3372
+              (575) 621–0931 or<br />(575) 644–3372
             </Typography>
             <Box sx={{
               display: 'grid',
