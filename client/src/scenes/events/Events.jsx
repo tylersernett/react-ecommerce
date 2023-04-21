@@ -18,18 +18,18 @@ export const heroTextureImports = importAll(
 );
 
 const Events = () => {
-  const isNonMobile = useMediaQuery("(min-width:768px)");
+  const isNonMobile = useMediaQuery("(min-width:600px)");
   return (
     <Box m="100px auto" width="80%" >
       <Typography variant='h2' textAlign='center' my='20px' color={shades.secondary[400]}>
-        Events at The Yard
+        Events @ <span style={{letterSpacing: '.1rem', display:'inline-block'}}>THE YARD</span>
       </Typography>
-      <Box width={isNonMobile ? '560px' : '300px'} mx='auto'>
+      <Box 
+      width={isNonMobile ? '420px' : '100'} 
+      mx='auto' mb='20px' textAlign='center'
+      >
         <Typography fontSize='1rem' >
           We know sometimes there's nothing like enjoying an evening out in the back yard, and we've designed this space with our community in mind.
-          <br /><br />
-          Have an event you think our space would be perfect for? Contact us and lets talk about what we can do.
-          <br /><br />
         </Typography>
       </Box>
       <Carousel
@@ -85,8 +85,32 @@ const Events = () => {
           </Box>
         ))}
       </Carousel>
-      <Box mt='50px' >
+      <Box mt='20px' >
+
+        <Box mb='10px'
+          // mt='39px'
+        // sx={{ display: 'flex', alignItems: 'center' }}
+        >
+          <Box display="flex"
+            justifyContent="center"
+            alignItems="center"
+            // height={343} 
+            // width={300}
+            p='15px'
+            sx={{
+              border: 0,
+              borderRadius: '5px',
+              // backgroundColor: shades.neutral[900],
+            }}
+          >
+            <Typography fontSize='1rem' textAlign='center' >
+              Have an event you think our space would be perfect for? <br />Contact us and lets talk about what we can do.
+            </Typography>
+          </Box>
+        </Box>
+
         <ContactForm />
+
       </Box>
     </Box>
   )
