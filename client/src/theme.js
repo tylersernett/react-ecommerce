@@ -86,6 +86,18 @@ export const theme = createTheme({
                 }
             }
         },
+        MuiButton:{
+            styleOverrides: {
+                root:{
+                    color:'white',
+                    // color:shades.secondary[500], //font
+                    backgroundColor: shades.primary[400],
+                    "&:hover": {
+                        backgroundColor: shades.primary[300],
+                      }
+                }
+            }
+        },
         // MuiCheckBox: {
         //     styleOverrides: {
         //         root: {
