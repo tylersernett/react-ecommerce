@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Typography, Box } from '@mui/material';
+import { Button, ButtonGroup, FormControlLabel, ToggleButton, ToggleButtonGroup, Typography, Box } from '@mui/material';
 import { DatePicker, TimePicker, LocalizationProvider, DateCalendar } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
@@ -27,8 +27,9 @@ const AppointmentBooking = () => {
     setIsBooked(false);
   };
 
-  const handleTimeChange = (time) => {
-    setSelectedTime(time);
+  const handleTimeChange = (event) => {
+    console.log(event.target.value)
+    setSelectedTime(event.target.value);
     setIsBooked(false);
   };
 
@@ -62,65 +63,47 @@ const AppointmentBooking = () => {
             showDaysOutsideCurrentMonth
           />
         </Box>
-        <Box>
+        <Box width='156px'>
           {selectedDate && (
             <>
               <Typography>
                 {selectedDate.format('MMMM D, YYYY')}
-                </Typography>
-              <Box>
-                <ButtonGroup>
-                  <Button>12pm</Button>
-                  <Button>1pm</Button>
-                  <Button>2pm</Button>
-                  <Button>3pm</Button>
-                </ButtonGroup>
+              </Typography>
+              <Box >
+                <ToggleButtonGroup orientation="vertical"
+                  aria-label="Time Select"
+                  value={selectedTime}
+                  onChange={handleTimeChange}
+                  defaultValue='12'
+                  fullWidth
+                  exclusive={true}
+                >
+                  <ToggleButton  width='100px' value='12pm'>12pm</ToggleButton>
+                  <ToggleButton value='1pm'>1pm</ToggleButton>
+                  <ToggleButton value='2pm'>2pm</ToggleButton>
+                  <ToggleButton value='3pm'>3pm</ToggleButton>
+                </ToggleButtonGroup>
               </Box>
-              {/* <TimePicker
-            label="Select Time"
-            value={selectedTime}
-            onChange={handleTimeChange}
-            inputProps={{
-              step: 60 * 60,
-              min: 9,
-              max: 5,
-              // min: new Date(
-              //   selectedDate.getFullYear(),
-              //   selectedDate.getMonth(),
-              //   selectedDate.getDate(),
-              //   9,
-              //   0,
-              //   0
-              // ),
-              // max: new Date(
-              //   selectedDate.getFullYear(),
-              //   selectedDate.getMonth(),
-              //   selectedDate.getDate(),
-              //   16,
-              //   0,
-              //   0
-              // ),
-            }}
-          /> */}
+              
             </>
           )}
-        </Box>
-      </Box>
+        
 
-
-      {selectedTime && (
-        <Button variant="contained" color="primary" onClick={handleBookAppointment}>
+        {selectedTime && (
+        <Button width='200px' variant="contained" color="primary" onClick={handleBookAppointment}>
           Book Appointment
         </Button>
       )}
       {isBooked && (
-        <Typography variant="subtitle1" color="primary">
-          Your appointment on
-          {/* {selectedDate.toDateString()} at {selectedTime.toLocaleTimeString()}  */}
-
-          has been booked.
+        <Typography variant="subtitle1" color="white">
+          Your appointment on {selectedDate.format('MMMM D, YYYY')} at {selectedTime} has been booked.
         </Typography>
       )}
+      </Box>
+      </Box>
+
+
+      
     </LocalizationProvider>
   );
 };
