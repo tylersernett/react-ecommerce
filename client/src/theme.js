@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import { radioClasses } from "@mui/material";
 
 export const shades = {
     primary: {
@@ -82,22 +83,104 @@ export const theme = createTheme({
                         "&.Mui-focused fieldset": {
                             borderColor: shades.secondary[500] //border
                         }
-                    }
+                    },
                 }
             }
         },
-        MuiButton:{
+        MuiButton: {
             styleOverrides: {
-                root:{
-                    color:'white',
+                root: {
+                    color: 'white',
                     // color:shades.secondary[500], //font
                     backgroundColor: shades.primary[400],
                     "&:hover": {
                         backgroundColor: shades.primary[300],
-                      }
+                    }
                 }
             }
         },
+        MuiButtonBase: {
+            styleOverrides: {
+                root: {
+                    "&.MuiPickersDay-today": {
+                        // border: '1px solid yellow',
+                        '&:not(.Mui-selected)': {
+                            // today: {
+                            // border: '1px solid yellow'
+                            // }
+                        }
+                    },
+                }
+            }
+        },
+        MuiPickersDay: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: shades.neutral[900], //colors OUTSIDE month
+                    "&.Mui-selected": {
+                        backgroundColor: shades.secondary[600],
+                        "&:hover": {
+                            backgroundColor: shades.primary[400],
+                        },
+                        "&:focus": {
+                            backgroundColor: shades.secondary[600],
+                        }
+                    },
+                    "&:hover": {
+                        backgroundColor: shades.primary[400],
+                    },
+                },
+                dayOutsideMonth: {
+                    backgroundColor: shades.neutral[800], //colors INSIDE month
+                },
+                today: {
+                    border: '1px solid yellow',
+                    "&: not(.Mui-selected)": {
+                        border: '1px solid yellow',
+                    }
+                },
+            }
+        },
+        MuiDateCalendar: {
+            styleOverrides: {
+                root: {
+                    // color: 'white',
+                    // color:shades.secondary[500], //font
+                    // backgroundColor: shades.secondary[100],
+                }
+            }
+        },
+        MuiToggleButton: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: shades.neutral[800],
+                    border: `1px solid ${shades.neutral[900]}`,
+                    "&:hover": {
+                        backgroundColor: shades.primary[400],
+                    },
+                    "&.Mui-selected": {
+                        backgroundColor: shades.secondary[600],
+                        "&:hover": {
+                            backgroundColor: shades.secondary[700],
+                        },
+                    }
+                }
+            }
+        },
+        MuiToggleButtonGroup: {
+            styleOverrides: {
+                root: {
+                    // backgroundColor: shades.neutral[800],
+                    border: `1px solid ${shades.neutral[900]}`,
+                },
+                grouped: {
+                    "&: not(:first-of-type)": {
+                        border: `1px solid ${shades.neutral[900]}`,
+                    }
+                }
+            }
+        },
+        // .css-tarfny-MuiButtonBase-root-MuiPickersDay-root.Mui-selected
         // MuiCheckBox: {
         //     styleOverrides: {
         //         root: {
