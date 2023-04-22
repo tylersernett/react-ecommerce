@@ -6,11 +6,14 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { shades } from '../../theme';
 import dayjs from 'dayjs';
 import BookingForm from './BookingForm';
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const AppointmentBooking = () => {
   const [selectedDate, setSelectedDate] = useState(dayjs().add(1, 'day')); //defaults to tomorrow
   const [selectedTime, setSelectedTime] = useState(null);
   const [isBooked, setIsBooked] = useState(false);
+
+  const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleDateChange = (date) => {
     console.log(dayjs(date))
@@ -50,7 +53,8 @@ const AppointmentBooking = () => {
         display='flex'
         flexWrap='wrap'
         // gridTemplateColumns={'2fr 1fr 1fr'} 
-        gap='35px'
+        gap='15px'
+        justifyContent={'center'}
       >
         <Box>
           <DateCalendar
@@ -64,7 +68,7 @@ const AppointmentBooking = () => {
           />
         </Box>
 
-        <Box display='grid' gridTemplateColumns={'1fr 1fr'} columnGap='60px'>
+        <Box display='grid' gridTemplateColumns={'1fr 1fr'} columnGap={isNonMobile? '40px': '15px'} gridTemplateRows='auto'>
           <Box minWidth='156px' mt='20px'>
             {selectedDate && (
               <>
@@ -90,26 +94,32 @@ const AppointmentBooking = () => {
 
               </>
             )}
-
-
-            {selectedTime && (
-              <Button mt='20px' width='200px' variant="contained" onClick={handleBookAppointment} sx={{ backgroundColor: shades.secondary[600], '&:hover': { backgroundColor: shades.secondary[700] } }}>
-                Book Appointment
-              </Button>
-            )}
-
-            {/* Name, Party Size, Email, Phone # */}
-
-            {isBooked && (
-              <Typography variant="subtitle1" color="white">
-                Your appointment on {selectedDate.format('MMMM D, YYYY')} at {selectedTime} has been booked.
-              </Typography>
-            )}
           </Box>
 
           <Box maxWidth='156px' mt='15px'>
             <BookingForm />
           </Box>
+
+          {selectedTime && (
+            <Box sx={{ gridColumn: 'span 2' }} >
+              <Button
+                mt='20px'
+                fullWidth
+                variant="contained"
+                onClick={handleBookAppointment}
+                sx={{ backgroundColor: shades.secondary[600], '&:hover': { backgroundColor: shades.secondary[700] } }}
+              >
+                Book Appointment
+              </Button>
+            </Box>
+          )}
+
+          {isBooked && (
+            <Typography variant="subtitle1" color="white">
+              Your appointment on {selectedDate.format('MMMM D, YYYY')} at {selectedTime} has been booked.
+            </Typography>
+          )}
+
         </Box>
       </Box>
     </LocalizationProvider>
