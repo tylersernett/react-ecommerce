@@ -20,7 +20,7 @@ const BookingForm = () => {
     const validationSchema = Yup.object({
         name: Yup.string().required('required'),
         email: Yup.string().email('invalid email').required('required'),
-        phone: Yup.string().matches(phoneRegEx, 'invalid phone number'),
+        phone: Yup.string().matches(phoneRegEx, 'invalid phone #'),
         partySize: Yup.string().required('required')
     });
 
