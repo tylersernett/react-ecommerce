@@ -1,12 +1,13 @@
 
 import React, { useState } from 'react';
-import { Button, ButtonGroup, FormControlLabel, ToggleButton, ToggleButtonGroup, Typography, Box } from '@mui/material';
+import { Button, ButtonGroup, Form, FormControlLabel, ToggleButton, ToggleButtonGroup, Typography, Box } from '@mui/material';
 import { DatePicker, TimePicker, LocalizationProvider, DateCalendar } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { shades } from '../../theme';
 import dayjs from 'dayjs';
 import BookingForm from './BookingForm';
 import useMediaQuery from "@mui/material/useMediaQuery";
+import * as Yup from 'yup';
 
 const AppointmentBooking = () => {
   const [selectedDate, setSelectedDate] = useState(dayjs().add(1, 'day')); //defaults to tomorrow
@@ -22,11 +23,6 @@ const AppointmentBooking = () => {
     setIsBooked(false);
   };
 
-  const handleTimeChange = (event) => {
-    console.log(event.target.value)
-    setSelectedTime(event.target.value);
-    setIsBooked(false);
-  };
 
   const handleBookAppointment = () => {
     console.log("book")
@@ -68,59 +64,9 @@ const AppointmentBooking = () => {
           />
         </Box>
 
-        <Box display='grid' gridTemplateColumns={'1fr 1fr'} columnGap={isNonMobile? '40px': '15px'} gridTemplateRows='auto'>
-          <Box minWidth='156px' mt='20px'>
-            {selectedDate && (
-              <>
-                <Typography textAlign={'center'}>
-                  {selectedDate.format('MMMM D, YYYY')}
-                </Typography>
-                <Box my='12px'>
-                  <ToggleButtonGroup orientation="vertical"
-                    aria-label="Time Select"
-                    value={selectedTime}
-                    onChange={handleTimeChange}
-                    defaultValue='12'
-                    fullWidth
-                    exclusive={true}
-                  >
-                    <ToggleButton value='12pm'>12:00pm</ToggleButton>
-                    <ToggleButton value='1pm'>1:00pm</ToggleButton>
-                    <ToggleButton value='2pm'>2:00pm</ToggleButton>
-                    <ToggleButton value='3pm'>3:00pm</ToggleButton>
-                    <ToggleButton value='4pm'>4:00pm</ToggleButton>
-                  </ToggleButtonGroup>
-                </Box>
 
-              </>
-            )}
-          </Box>
+        <BookingForm selectedDate={selectedDate} selectedTime={selectedTime} setSelectedTime={setSelectedTime}/>
 
-          <Box maxWidth='156px' mt='15px'>
-            <BookingForm />
-          </Box>
-
-          {selectedTime && (
-            <Box sx={{ gridColumn: 'span 2' }} >
-              <Button
-                mt='20px'
-                fullWidth
-                variant="contained"
-                onClick={handleBookAppointment}
-                sx={{ backgroundColor: shades.secondary[600], '&:hover': { backgroundColor: shades.secondary[700] } }}
-              >
-                Book Appointment
-              </Button>
-            </Box>
-          )}
-
-          {isBooked && (
-            <Typography variant="subtitle1" color="white">
-              Your appointment on {selectedDate.format('MMMM D, YYYY')} at {selectedTime} has been booked.
-            </Typography>
-          )}
-
-        </Box>
       </Box>
     </LocalizationProvider>
   );
