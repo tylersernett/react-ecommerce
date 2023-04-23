@@ -37,7 +37,7 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
     };
 
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        //e.preventDefault();
         console.log(formRef.current.values.name);
     };
 
@@ -84,12 +84,15 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
                     // onSubmit={handleSubmit}
                     >
                         {({ values, errors, touched }) => (
-                            <Form
-                            // target="_blank"
-                            // onSubmit={handleSubmit}
-                            // action="https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f"
-                            // method="POST"
+                            <Form id='mainform'
+                                // target="_blank"
+                                onSubmit={handleSubmit}
+                                action="https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f"
+                                method="POST"
                             >
+                                <input type="hidden" name="_next" value="http://localhost:2000/thankyoubooked" />
+                                <input type="hidden" name="AppointmentDate" value={selectedDate.format('MMMM D, YYYY')} />
+                                <input type="hidden" name="AppointmentTime" value={selectedTime} />
                                 <Field
                                     name='name'
                                     as={TextField}
@@ -137,6 +140,7 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
                                     error={touched.partySize && Boolean(errors.partySize)}
                                     helperText={touched.partySize && errors.partySize}
                                 />
+                                
 
                                 {/* <Button
                                     variant='contained'
@@ -174,24 +178,26 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
             {selectedTime && (
                 <Box sx={{ gridColumn: 'span 2' }} >
                     <form
-                        // target="_blank"
-                        //   onSubmit={handleBookAppointment}
-                        action="https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f"
-                        method="POST"
+                    // target="_blank"
+                    //   onSubmit={handleSubmit}
+                    // action="https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f"
+                    // method="POST"
                     >
-                        <input type="hidden" name="formdate" value={selectedDate.format('MMMM D, YYYY')} />
+                        {/* <input type="hidden" name="formdate" value={selectedDate.format('MMMM D, YYYY')} />
                         <input type="hidden" name="formtime" value={selectedTime} />
-                        <input type="hidden" name="formname" value={formRef.current.values} />
+                        <input type="hidden" name="_next" value="http://localhost:2000/thankyoubooked" />
+                        <input type="hidden" name="formname" value={formRef.current.values.name} />
                         <input type="hidden" name="formemail" value={formRef.current.values.email} />
                         <input type="hidden" name="formphone" value={formRef.current.values.phone} />
                         <input type="hidden" name="formparty" value={formRef.current.values.partySize} />
-                        <input type="hidden" name="_next" value="http://localhost:2000/thankyoubooked" />
+                         */}
                         <Button
                             mt='20px'
                             fullWidth
                             variant="contained"
                             type="submit"
-                            onClick={handleSubmit}
+                            form='mainform'
+                            // onClick={handleSubmit}
                             sx={{ backgroundColor: shades.secondary[600], '&:hover': { backgroundColor: shades.secondary[700] } }}
                         >
                             Book Appointment
