@@ -11,6 +11,7 @@ import Appointments from "./scenes/appointments/Appointments";
 import Events from "./scenes/events/Events";
 import Gallery from "./scenes/gallery/Gallery";
 import Thankyou from "./scenes/events/Thankyou";
+import Thankyoubooked from "./scenes/appointments/Thankyoubooked";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -39,6 +40,7 @@ function App() {
           <Route path="events" element={<Events />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="thankyou" element={<Thankyou />} />
+          <Route path="thankyoubooked" element={<Thankyoubooked />} />
         </Routes>
         <CartMenu />
         <Footer />
@@ -52,5 +54,7 @@ export default App;
 //TODO: sort by price
 //modular: multiple vs singular items
 //color correct photos?
-//TODO: checkout form validation
 //TODO: alter 'summer sale' boxes
+//TODO: add fb/insta to footer
+//TODO: calendar: disable earlier dates
+//TODO: add video landing
