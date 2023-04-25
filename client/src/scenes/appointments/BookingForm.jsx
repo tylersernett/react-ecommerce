@@ -1,10 +1,10 @@
-import { React, useRef } from 'react';
+import { React, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import { shades } from '../../theme';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, useFormik } from 'formik';
 import dayjs from 'dayjs';
 import * as Yup from 'yup';
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -12,14 +12,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
     const formRef = useRef();
     const isNonMobile = useMediaQuery("(min-width:600px)");
-    const initialValues = {
-        // date: '',
-        // time: '',
-        name: '',
-        email: '',
-        phone: '',
-        partySize: ''
-    };
+    const [isBooked, setIsBooked] = useState(false)
 
     const phoneRegEx = /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
 
@@ -33,7 +26,7 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
     const handleTimeChange = (event) => {
         console.log(event.target.value)
         setSelectedTime(event.target.value);
-        // setIsBooked(false);
+        setIsBooked(false);
     };
 
     const handleSubmit = (e) => {
@@ -44,6 +37,47 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
     const getFormValues = (values) => {
         return values;
     };
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            phone: '',
+            partySize: ''
+        },
+        validationSchema: validationSchema,
+        onSubmit: (values) => {
+            const form = document.getElementById('mainform');
+            const formData = new FormData(form);
+            console.log(formData)
+            values['date'] = selectedDate.format('MMMM D, YYYY');
+            values['time'] = selectedTime;
+            fetch('https://formsubmit.co/ajax/7793f1e72a9025f1888edee332bccdef', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(values),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    //success redirect
+                    formik.resetForm();
+                    setIsBooked(true)
+                    // window.location.href = '/thankyoubooked'
+                    //return response.text();
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the form submission:', error);
+                });
+        },
+    });
 
     return (
         <Box display='grid' gridTemplateColumns={'1fr 1fr'} columnGap={isNonMobile ? '40px' : '15px'} gridTemplateRows='auto'>
@@ -77,140 +111,100 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
             <Box maxWidth='156px' mt='15px'>
                 <Box>
                     <Typography variant='h3' color={shades.secondary[400]}>Info</Typography>
-                    <Formik
-                        initialValues={initialValues}
-                        validationSchema={validationSchema}
-                        innerRef={formRef}
-                    // onSubmit={handleSubmit}
+
+                    <form id='mainform'
+                        // target="_blank"
+                        onSubmit={formik.handleSubmit}
+                    // action="https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f"
+                    // method="POST"
                     >
-                        {({ values, errors, touched }) => (
-                            <Form id='mainform'
-                                // target="_blank"
-                                onSubmit={handleSubmit}
-                                action="https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f"
-                                method="POST"
-                            >
-                                <input type="hidden" name="_next" value="http://localhost:2000/thankyoubooked" />
-                                <input type="hidden" name="AppointmentDate" value={selectedDate.format('MMMM D, YYYY')} />
-                                <input type="hidden" name="AppointmentTime" value={selectedTime} />
-                                <Field
-                                    name='name'
-                                    as={TextField}
-                                    label='Name'
-                                    fullWidth
-                                    margin='normal'
-                                    variant='outlined'
-                                    size="small"
-                                    hiddenLabel
-                                    error={touched.name && Boolean(errors.name)}
-                                    helperText={touched.name && errors.name}
-                                />
-                                <Field
-                                    name='email'
-                                    as={TextField}
-                                    label='Email'
-                                    fullWidth
-                                    margin='normal'
-                                    variant='outlined'
-                                    size="small"
-                                    error={touched.email && Boolean(errors.email)}
-                                    helperText={touched.email && errors.email}
-                                />
-                                <Field
-                                    name='phone'
-                                    as={TextField}
-                                    label='Phone (optional)'
-                                    fullWidth
-                                    margin='normal'
-                                    variant='outlined'
-                                    size="small"
-                                    error={touched.phone && Boolean(errors.phone)}
-                                    helperText={touched.phone && errors.phone}
-                                />
-                                <Field
-                                    name='partySize'
-                                    as={TextField}
-                                    label='Party Size'
-                                    fullWidth
-                                    margin='normal'
-                                    // multiline
-                                    // rows={4}
-                                    variant='outlined'
-                                    size="small"
-                                    error={touched.partySize && Boolean(errors.partySize)}
-                                    helperText={touched.partySize && errors.partySize}
-                                />
-                                
+                        <input type="hidden" name="_captcha" value="false" />
+                        <input type="hidden" name="_next" value="http://localhost:2000/thankyoubooked" />
+                        <input type="hidden" name="AppointmentDate" value={selectedDate.format('MMMM D, YYYY') || ''} />
+                        <input type="hidden" name="AppointmentTime" value={selectedTime || ''} />
+                        <TextField
+                            name='name'
+                            // as={TextField}
+                            label='Name'
+                            fullWidth
+                            margin='normal'
+                            variant='outlined'
+                            size="small"
+                            value={formik.values.name}
+                            onChange={formik.handleChange}
+                            error={formik.touched.name && Boolean(formik.errors.name)}
+                            helperText={formik.touched.name && formik.errors.name}
 
-                                {/* <Button
-                                    variant='contained'
-                                    onClick={() => console.log(getFormValues(values))}
-                                    sx={{
-                                        mt: 2,
-                                        backgroundColor: shades.neutral[700],
-                                        '&:hover': {
-                                            backgroundColor: shades.secondary[600]
-                                        }
-                                    }}
-                                >
-                                    Log Form Values
-                                </Button> */}
+                        />
+                        <TextField
+                            name='email'
+                            // as={TextField}
+                            label='Email'
+                            fullWidth
+                            margin='normal'
+                            variant='outlined'
+                            size="small"
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                            error={formik.touched.email && Boolean(formik.errors.email)}
+                            helperText={formik.touched.email && formik.errors.email}
+                        />
+                        <TextField
+                            name='phone'
+                            // as={TextField}
+                            label='Phone (optional)'
+                            fullWidth
+                            margin='normal'
+                            variant='outlined'
+                            size="small"
+                            value={formik.values.phone}
+                            onChange={formik.handleChange}
+                            error={formik.touched.phone && Boolean(formik.errors.phone)}
+                            helperText={formik.touched.phone && formik.errors.phone}
+                        />
+                        <TextField
+                            name='partySize'
+                            // as={TextField}
+                            label='Party Size'
+                            fullWidth
+                            margin='normal'
+                            variant='outlined'
+                            size="small"
+                            value={formik.values.partySize}
+                            onChange={formik.handleChange}
+                            error={formik.touched.partySize && Boolean(formik.errors.partySize)}
+                            helperText={formik.touched.partySize && formik.errors.partySize}
+                        />
+                    </form>
 
-                                {/* <Button
-                                type='submit'
-                                variant='contained'
-                                sx={{
-                                    mt: 2,
-                                    backgroundColor: shades.neutral[700],
-                                    '&:hover': {
-                                        backgroundColor: shades.secondary[600]
-                                    }
-                                }}
-                            >
-                                Book Appointment
-                            </Button> */}
-                            </Form>
-                        )}
-                    </Formik>
                 </Box>
             </Box>
 
             {selectedTime && (
                 <Box sx={{ gridColumn: 'span 2' }} >
-                    <form
-                    // target="_blank"
-                    //   onSubmit={handleSubmit}
-                    // action="https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f"
-                    // method="POST"
-                    >
-                        {/* <input type="hidden" name="formdate" value={selectedDate.format('MMMM D, YYYY')} />
-                        <input type="hidden" name="formtime" value={selectedTime} />
-                        <input type="hidden" name="_next" value="http://localhost:2000/thankyoubooked" />
-                        <input type="hidden" name="formname" value={formRef.current.values.name} />
-                        <input type="hidden" name="formemail" value={formRef.current.values.email} />
-                        <input type="hidden" name="formphone" value={formRef.current.values.phone} />
-                        <input type="hidden" name="formparty" value={formRef.current.values.partySize} />
-                         */}
+                    <form>
+                        {/* {!formik.isSubmitting && */}
                         <Button
                             mt='20px'
                             fullWidth
                             variant="contained"
                             type="submit"
                             form='mainform'
-                            // onClick={handleSubmit}
                             sx={{ backgroundColor: shades.secondary[600], '&:hover': { backgroundColor: shades.secondary[700] } }}
+                            disabled={formik.isSubmitting ? true : false}
                         >
                             Book Appointment
                         </Button>
                     </form>
+                    {isBooked && (
+                        <Typography variant="subtitle1" color="white" mt='15px'>
+                            Your appointment on {selectedDate.format('MMMM D, YYYY')} at {selectedTime} has been booked!
+                            <br/>
+                            A member of our team will reach out soon to confirm.
+                        </Typography>
+                    )}
                 </Box>
             )}
-
-            {/* {isBooked && (
-  <Typography variant="subtitle1" color="white">
-    Your appointment on {selectedDate.format('MMMM D, YYYY')} at {selectedTime} has been booked.
-  </Typography>
-)} */}
 
         </Box>
     );
