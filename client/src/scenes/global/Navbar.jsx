@@ -37,7 +37,7 @@ const Navbar = () => {
 
                     {/* TITLE============================================= */}
                     <Typography
-                        variant={isMedScreen ? "h1" : isSmlScreen ? "h2" : "h3"}
+                        variant={isSmlScreen ? "h1" : "h3"}
                         onClick={() => navigate("/")}
                         sx={{
                             display: 'flex',
@@ -57,13 +57,13 @@ const Navbar = () => {
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}
                         display="flex"
                         justifyContent="right"
-                        columnGap={isSmlScreen ? "30px" : "2px"}
+                        columnGap={isSmlScreen ? "30px" : "15px"}
                         zIndex="2"
                     >
                         {pages.map((page) => (
                             <NavLink key={page} to={`/${page}`} style={{ textDecoration: 'none', color: 'white' }}>
                                 <Button
-                                    // onClick={handleCloseNavMenu}
+                                    onClick={handleCloseNavMenu} //to ensure scroll doesn't get locked if user transitions from small to large window
                                     sx={{ my: 2, color: 'white', display: 'block', backgroundColor: 'transparent' }}
                                 >
                                     {page}
@@ -128,7 +128,7 @@ const Navbar = () => {
                             badgeContent={totalCount}
                             color="secondary"
                             invisible={cart.length === 0} //don't show badge if nothing in cart
-                            onClick={() => dispatch(setIsCartOpen({}))} //onClick also applies to child element, so keep it up here
+                            onClick={() => dispatch(setIsCartOpen({}))} //onClick also applies to child element (keep it here attached to badge parent)
                             sx={{
                                 "& .MuiBadge-badge": {
                                     right: 10,
