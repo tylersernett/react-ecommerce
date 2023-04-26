@@ -43,7 +43,6 @@ const ItemDetails = () => {
       }
     );
     const itemsJson = await items.json();
-    
     setItems(itemsJson.data);
   }
 
@@ -126,7 +125,7 @@ const ItemDetails = () => {
       {/* INFORMATION */}
       <Box m="20px 0">
         <Tabs value={value} onChange={handleChange} textColor="secondary"
-        indicatorColor="secondary">
+          indicatorColor="secondary">
           <Tab label="DESCRIPTION" value="description" />
           <Tab label="REVIEWS" value="reviews" />
         </Tabs>
@@ -150,9 +149,11 @@ const ItemDetails = () => {
           gap='15px'
           justifyContent="flex-start"
         >
-          {items.slice(0, 3).map((item, i) => (
-            <Item key={`${item.name}-${i}`} item={item} />
-          ))}
+          {items
+            .filter(thing => (thing.attributes.category === item.attributes.category) && (thing.id !== item.id))
+            .slice(0, 3).map((item, i) => (
+              <Item key={`${item.name}-${i}`} item={item} />
+            ))}
         </Box>
       </Box>
     </Box>
