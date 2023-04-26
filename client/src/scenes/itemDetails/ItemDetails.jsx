@@ -43,6 +43,7 @@ const ItemDetails = () => {
       }
     );
     const itemsJson = await items.json();
+    
     setItems(itemsJson.data);
   }
 
@@ -146,8 +147,8 @@ const ItemDetails = () => {
           mt="20px"
           display="flex"
           flexWrap="wrap"
-          columnGap="1.33%"
-          justifyContent="space-between"
+          gap='15px'
+          justifyContent="flex-start"
         >
           {items.slice(0, 3).map((item, i) => (
             <Item key={`${item.name}-${i}`} item={item} />
