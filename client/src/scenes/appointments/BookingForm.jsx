@@ -4,8 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import { shades } from '../../theme';
-import { Formik, Form, Field, useFormik } from 'formik';
-import dayjs from 'dayjs';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -27,15 +26,6 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
         console.log(event.target.value)
         setSelectedTime(event.target.value);
         setIsBooked(false);
-    };
-
-    const handleSubmit = (e) => {
-        //e.preventDefault();
-        console.log(formRef.current.values.name);
-    };
-
-    const getFormValues = (values) => {
-        return values;
     };
 
     const formik = useFormik({
@@ -112,19 +102,12 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
                 <Box>
                     <Typography variant='h3' color={shades.secondary[400]}>Info</Typography>
 
-                    <form id='mainform'
-                        // target="_blank"
-                        onSubmit={formik.handleSubmit}
-                    // action="https://formsubmit.co/e5dcdfe6629c8f6fabb6c8d18fcf023f"
-                    // method="POST"
-                    >
+                    <form id='mainform' onSubmit={formik.handleSubmit}>
                         <input type="hidden" name="_captcha" value="false" />
-                        <input type="hidden" name="_next" value="http://localhost:2000/thankyoubooked" />
                         <input type="hidden" name="AppointmentDate" value={selectedDate.format('MMMM D, YYYY') || ''} />
                         <input type="hidden" name="AppointmentTime" value={selectedTime || ''} />
                         <TextField
                             name='name'
-                            // as={TextField}
                             label='Name'
                             fullWidth
                             margin='normal'
@@ -138,7 +121,6 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
                         />
                         <TextField
                             name='email'
-                            // as={TextField}
                             label='Email'
                             fullWidth
                             margin='normal'
@@ -151,7 +133,6 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
                         />
                         <TextField
                             name='phone'
-                            // as={TextField}
                             label='Phone (optional)'
                             fullWidth
                             margin='normal'
@@ -164,7 +145,6 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
                         />
                         <TextField
                             name='partySize'
-                            // as={TextField}
                             label='Party Size'
                             fullWidth
                             margin='normal'
@@ -183,7 +163,6 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
             {selectedTime && (
                 <Box sx={{ gridColumn: 'span 2' }} >
                     <form>
-                        {/* {!formik.isSubmitting && */}
                         <Button
                             mt='20px'
                             fullWidth
@@ -199,7 +178,7 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
                     {isBooked && (
                         <Typography variant="subtitle1" color="white" mt='15px'>
                             Your appointment on {selectedDate.format('MMMM D, YYYY')} at {selectedTime} has been booked!
-                            <br/>
+                            <br />
                             A member of our team will reach out soon to confirm.
                         </Typography>
                     )}
