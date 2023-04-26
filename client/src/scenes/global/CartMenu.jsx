@@ -44,8 +44,8 @@ const CartMenu = () => {
         <Drawer anchor="right" open={isCartOpen} onClose={toggleDrawer(false)}>
             <Box padding="20px" overflow="auto" height="100%"> {/*  minWidth='380px' */}
                 {/* HEADER */}
-                <FlexBox mb="15px" sx={{display: 'flex', flexDirection: 'row-reverse'}}> {/* reverse direction so X is always right*/}
-                    <IconButton   onClick={() => dispatch(setIsCartOpen({}))}>
+                <FlexBox mb="15px" sx={{ display: 'flex', flexDirection: 'row-reverse' }}> {/* reverse direction so X is always right*/}
+                    <IconButton onClick={() => dispatch(setIsCartOpen({}))}>
                         <CloseIcon />
                     </IconButton>
                     {cart.length > 0 ?
@@ -53,7 +53,7 @@ const CartMenu = () => {
                             <Typography variant="h3" color={shades.secondary[600]}>SHOPPING BAG&nbsp;
                                 <span style={{ color: shades.neutral[500] }}>({cart.length})</span>
                             </Typography>
-                        ) : "" }
+                        ) : ""}
                 </FlexBox>
 
                 {/* CART LIST */}
@@ -75,7 +75,7 @@ const CartMenu = () => {
                                             {item.attributes.name}
                                         </Typography>
                                         <IconButton onClick={() => dispatch(removeFromCart({ id: item.id }))}>
-                                            <CloseIcon fontSize='small'/>
+                                            <CloseIcon fontSize='small' />
                                         </IconButton>
                                     </FlexBox>
                                     <Typography>{item.attributes.shortDescription}</Typography>
@@ -139,15 +139,18 @@ const CartMenu = () => {
                             </>
                         ) : (
                             <Button variant="outlined"
+                                disabled
                                 sx={{
-                                    // backgroundColor: shades.neutral[700],
-                                    color: 'white',
-                                    borderRadius: 0,
-                                    border: '1px solid black',
-                                    minWidth: "100%",
-                                    padding: "20px 40px",
-                                    fontWeight: "bold",
-                                    m: "20px 0",
+                                    "&:disabled": {
+                                        // backgroundColor: shades.neutral[700],
+                                        color: 'white',
+                                        borderRadius: 0,
+                                        border: '1px solid black',
+                                        minWidth: "100%",
+                                        padding: "20px 40px",
+                                        fontWeight: "bold",
+                                        m: "20px 0",
+                                    }
                                 }}>
                                 Your Bag Is Empty
                             </Button>
