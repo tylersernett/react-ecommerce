@@ -26,6 +26,11 @@ const Item = ({ item, width }) => {
         position="relative"
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}
+        style={{
+          width: 300,
+          height: 300,
+          overflow: "hidden",
+        }}
       >
         <img
           alt={item.name}
@@ -33,7 +38,11 @@ const Item = ({ item, width }) => {
           height="300px"
           src={`http://localhost:1337${url}`}
           onClick={() => navigate(`/item/${item.id}`)}
-          style={{ cursor: "pointer" }}
+          style={{
+            cursor: "pointer",
+            transform: isHovered ? "scale(1.1)" : "scale(1)",
+            transition: "transform 0.3s ease-in-out",
+          }}
         />
 
         {/* –  + buttons */}
@@ -53,18 +62,18 @@ const Item = ({ item, width }) => {
               borderRadius="3px"
             >
               <IconButton color='primary' onClick={() => setCount((currentCount) => Math.max(currentCount - 1, 1))}>
-                <RemoveIcon sx={{color:shades.neutral[600]}} />
+                <RemoveIcon sx={{ color: shades.neutral[600] }} />
               </IconButton>
               <Typography color={shades.primary[300]}>{count}</Typography>
               <IconButton color='primary' onClick={() => setCount((currentCount) => currentCount + 1)}>
-                <AddIcon sx={{color:shades.neutral[600]}} />
+                <AddIcon sx={{ color: shades.neutral[600] }} />
               </IconButton>
             </Box>
             <Button
               onClick={() => {
                 dispatch(addToCart({ item: { ...item, count } }));
               }}
-              sx={{ backgroundColor: shades.primary[400], color: "white" ,"&:hover": {backgroundColor: shades.secondary[600],}}}
+              sx={{ backgroundColor: shades.primary[400], color: "white", "&:hover": { backgroundColor: shades.secondary[600], } }}
             >
               Add to Cart
             </Button>
