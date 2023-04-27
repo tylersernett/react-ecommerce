@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { shades } from "../../theme";
 import { setIsCartOpen } from "../../state";
 
-const pages = ['Shop', 'Events', 'Gallery', 'Appointments'];
+const pages = ['Shop', 'Events', 'Appointments'];
 
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
