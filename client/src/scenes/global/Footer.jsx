@@ -1,5 +1,5 @@
-import { useTheme } from "@emotion/react";
-import { Box, Typography, useMediaQuery, IconButton, Link } from "@mui/material";
+// import { useTheme } from "@emotion/react";
+import { Box, Typography, useMediaQuery, Link, IconButton } from "@mui/material";
 // import { Link } from "react-router-dom";
 import { shades } from "../../theme";
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -94,10 +94,10 @@ function Footer() {
             <Typography variant="h4" fontWeight="bold" mb="10px" color={shades.secondary[500]}>
               Customer Care
             </Typography>
-            <Typography mb="10px"><Link underline="hover" color="inherit" href='/thankyou'>Help Center</Link></Typography>
-            <Typography mb="10px"><Link underline="hover" color="inherit" href='/thankyou'>Track Your Order</Link></Typography>
-            <Typography mb="10px"><Link underline="hover" color="inherit" href='/thankyou'>Returns & Refunds</Link></Typography>
-            <Typography mb="10px"><Link underline="hover" color="inherit" href='/thankyou'>Privacy Policy</Link></Typography>
+            <Typography mb="10px"><Link underline="hover" color="inherit" href='#0'>Help Center</Link></Typography>
+            <Typography mb="10px"><Link underline="hover" color="inherit" href='#0'>Track Your Order</Link></Typography>
+            <Typography mb="10px"><Link underline="hover" color="inherit" href='#0'>Returns & Refunds</Link></Typography>
+            <Typography mb="10px"><Link underline="hover" color="inherit" href='#0'>Privacy Policy</Link></Typography>
           </Box>
 
           <Box sx={{ display: 'flex', flexDirection: 'column', }} >
