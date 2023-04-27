@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/react-ecommerce/static/css/main.ce1c1065.css",
+    "main.js": "/react-ecommerce/static/js/main.7bcf21e2.js",
+    "static/media/yard02.png": "/react-ecommerce/static/media/yard02.95ac6ff757705902e5b8.png",
+    "static/media/yard03.png": "/react-ecommerce/static/media/yard03.5c6e361d91e003d50f9d.png",
+    "static/media/yard07.png": "/react-ecommerce/static/media/yard07.1a14778e43e6b52ea515.png",
+    "static/media/yard08.jpg": "/react-ecommerce/static/media/yard08.8af3f0d9825f04445e50.jpg",
+    "static/media/yard06.jpg": "/react-ecommerce/static/media/yard06.8d77f3f97b199ee2c9d6.jpg",
+    "static/media/yard04.jpg": "/react-ecommerce/static/media/yard04.55a4693869bd922aca90.jpg",
+    "static/media/yard05.jpg": "/react-ecommerce/static/media/yard05.ce3c9deaf999d865dc65.jpg",
+    "static/media/yard01.jpg": "/react-ecommerce/static/media/yard01.f7b51ebce9daa87cffd6.jpg",
+    "static/media/3hood ford.jpg": "/react-ecommerce/static/media/3hood ford.0513d679589bf748b947.jpg",
+    "static/media/1desert truck.jpg": "/react-ecommerce/static/media/1desert truck.9f79d218b8167e5cfd86.jpg",
+    "static/media/yard09.jpg": "/react-ecommerce/static/media/yard09.3e0e050b95c2d52bd744.jpg",
+    "static/media/yard10.jpg": "/react-ecommerce/static/media/yard10.30ce49367a38d586688e.jpg",
+    "static/media/2hood illum.jpg": "/react-ecommerce/static/media/2hood illum.8bc182ee0564edbc62b4.jpg",
+    "static/media/4mesilla park nm.jpg": "/react-ecommerce/static/media/4mesilla park nm.17a5c236af808facbb8b.jpg",
+    "static/media/6trucks teepees.jpg": "/react-ecommerce/static/media/6trucks teepees.0a0ad82700adfd10701f.jpg",
+    "static/media/yard11.jpg": "/react-ecommerce/static/media/yard11.76631b1ffdd3a3d5581e.jpg",
+    "static/media/0hood tracks.jpg": "/react-ecommerce/static/media/0hood tracks.3dfdaa523d57e015246a.jpg",
+    "static/media/5nm rainbow.jpg": "/react-ecommerce/static/media/5nm rainbow.67def78b34c75fdd051f.jpg",
+    "index.html": "/react-ecommerce/index.html",
+    "main.ce1c1065.css.map": "/react-ecommerce/static/css/main.ce1c1065.css.map",
+    "main.7bcf21e2.js.map": "/react-ecommerce/static/js/main.7bcf21e2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce1c1065.css",
+    "static/js/main.7bcf21e2.js"
+  ]
+}
