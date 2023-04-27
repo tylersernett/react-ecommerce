@@ -79,7 +79,8 @@ const ContactForm = () => {
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     error={formik.touched.email && Boolean(formik.errors.email)}
-                    helperText={formik.touched.email && formik.errors.email} />
+                    helperText={formik.touched.email && formik.errors.email}
+                />
                 <TextField
                     name='subject'
                     label='Subject'
@@ -89,7 +90,8 @@ const ContactForm = () => {
                     value={formik.values.subject}
                     onChange={formik.handleChange}
                     error={formik.touched.subject && Boolean(formik.errors.subject)}
-                    helperText={formik.touched.subject && formik.errors.subject} />
+                    helperText={formik.touched.subject && formik.errors.subject}
+                />
                 <TextField
                     name='message'
                     label='Message'
@@ -101,12 +103,14 @@ const ContactForm = () => {
                     value={formik.values.message}
                     onChange={formik.handleChange}
                     error={formik.touched.message && Boolean(formik.errors.message)}
-                    helperText={formik.touched.message && formik.errors.message} />
-                <input type="hidden" name="_next" value="http://localhost:2000/thankyou" />
+                    helperText={formik.touched.message && formik.errors.message}
+                />
+                {/* <input type="hidden" name="_next" value="http://localhost:2000/thankyou" /> */}
                 <Button
+                
                     type='submit'
                     variant='contained'
-                    sx={{ backgroundColor: shades.secondary[600], '&:hover': { backgroundColor: shades.secondary[700] } }}
+                    sx={{my:'15px', backgroundColor: shades.secondary[600], '&:hover': { backgroundColor: shades.secondary[700] } }}
                     disabled={formik.isSubmitting}
                     fullWidth={!isNonMobile}
                 >
@@ -115,7 +119,7 @@ const ContactForm = () => {
             </form>
 
             {isSent && (
-                <Typography variant="subtitle1" color="white" mt='15px'>
+                <Typography variant="subtitle1" color="white">
                     Your message has been received!
                     <br />
                     A member of our team will reach out soon.
