@@ -12,7 +12,7 @@ function FacebookLink() {
       target="_blank"
       rel="noopener"
     >
-      <FacebookIcon />
+      <FacebookIcon sx={{color:shades.secondary[500]}} fontSize='large'/>
     </IconButton>
   );
 }
@@ -24,8 +24,9 @@ function InstagramLink() {
       href="https://www.instagram.com/thehoodnewmexico/"
       target="_blank"
       rel="noopener"
+      
     >
-      <InstagramIcon />
+      <InstagramIcon sx={{color:shades.secondary[500]}} fontSize='large'/>
     </IconButton>
   );
 }
