@@ -1,5 +1,6 @@
 import { useTheme } from "@emotion/react";
-import { Box, Typography, useMediaQuery, IconButton } from "@mui/material";
+import { Box, Typography, useMediaQuery, IconButton, Link } from "@mui/material";
+// import { Link } from "react-router-dom";
 import { shades } from "../../theme";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -12,7 +13,7 @@ function FacebookLink() {
       target="_blank"
       rel="noopener"
     >
-      <FacebookIcon sx={{color:shades.secondary[500]}} fontSize='large'/>
+      <FacebookIcon sx={{ color: shades.secondary[500] }} fontSize='large' />
     </IconButton>
   );
 }
@@ -24,9 +25,8 @@ function InstagramLink() {
       href="https://www.instagram.com/thehoodnewmexico/"
       target="_blank"
       rel="noopener"
-      
     >
-      <InstagramIcon sx={{color:shades.secondary[500]}} fontSize='large'/>
+      <InstagramIcon sx={{ color: shades.secondary[500] }} fontSize='large' />
     </IconButton>
   );
 }
@@ -57,18 +57,19 @@ function Footer() {
           //   gridTemplateRows: 'auto auto auto'
           // }
         }}>
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            '@media (max-width: 992px)': {
-              gridColumnStart: '1',
-              gridColumnEnd: '3',
-            },
-            // '@media (max-width: 576px)': {
-            //   gridColumnStart: '1',
-            //   gridColumnEnd: '2',
-            // }
-          }}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              '@media (max-width: 992px)': {
+                gridColumnStart: '1',
+                gridColumnEnd: '3',
+              },
+              // '@media (max-width: 576px)': {
+              //   gridColumnStart: '1',
+              //   gridColumnEnd: '2',
+              // }
+            }}>
             <Typography
               variant="h4"
               fontWeight="bold"
@@ -93,11 +94,12 @@ function Footer() {
             <Typography variant="h4" fontWeight="bold" mb="10px" color={shades.secondary[500]}>
               Customer Care
             </Typography>
-            <Typography mb="10px">Help Center</Typography>
-            <Typography mb="10px">Track Your Order</Typography>
-            <Typography mb="10px">Returns & Refunds</Typography>
-            <Typography mb="10px">Privacy Poliy</Typography>
+            <Typography mb="10px"><Link underline="hover" color="inherit" href='/thankyou'>Help Center</Link></Typography>
+            <Typography mb="10px"><Link underline="hover" color="inherit" href='/thankyou'>Track Your Order</Link></Typography>
+            <Typography mb="10px"><Link underline="hover" color="inherit" href='/thankyou'>Returns & Refunds</Link></Typography>
+            <Typography mb="10px"><Link underline="hover" color="inherit" href='/thankyou'>Privacy Policy</Link></Typography>
           </Box>
+
           <Box sx={{ display: 'flex', flexDirection: 'column', }} >
             <Typography variant="h4" fontWeight="bold" mb="10px" color={shades.secondary[500]}>
               Contact Us
