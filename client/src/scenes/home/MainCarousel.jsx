@@ -29,6 +29,8 @@ const handleScrollToStore = () => {
 
 const MainCarousel = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
+  const isMediumPlus = useMediaQuery("(min-width:768px)");
+
   return (
     <Carousel
       autoPlay={true}
@@ -46,8 +48,8 @@ const MainCarousel = () => {
             color: "white",
             padding: "5px",
             zIndex: "10",
-            '&:hover':{
-              backgroundColor:'rgb(0,0,0,0.5)'
+            '&:hover': {
+              backgroundColor: 'rgb(0,0,0,0.5)'
             }
           }}
         >
@@ -64,8 +66,8 @@ const MainCarousel = () => {
             color: "white",
             padding: "5px",
             zIndex: "10",
-            '&:hover':{
-              backgroundColor:'rgb(0,0,0,0.5)'
+            '&:hover': {
+              backgroundColor: 'rgb(0,0,0,0.5)'
             }
           }}
         >
@@ -74,50 +76,78 @@ const MainCarousel = () => {
       )}
     >
       {Object.values(heroTextureImports).map((texture, index) => (
-        <Box key={`carousel-image-${index}`}>
-          <img
-            src={texture}
-            alt={`carousel-${index}`}
-            style={{
-              width: "100%",
-              height: "600px",
-              objectFit: "cover",
-              backgroundAttachment: "fixed",
-            }}
-          />
-          <Box
-            onClick={handleScrollToStore}
-            color="white"
-            padding="20px"
-            borderRadius="1px"
-            textAlign="left"
-            position="absolute"
-            top="46%"
-            left={isNonMobile ? "10%" : "0"}
-            right={isNonMobile ? undefined : "0"}
-            margin={isNonMobile ? undefined : "0 auto"}
-            maxWidth={isNonMobile ? undefined : "240px"}
+        <>
+          <Box key={`carousel-image-${index}`}
             sx={{
-              cursor:'pointer',
-              backgroundColor:"rgb(0, 0, 0, 0.7)",
-              transition:'0.3s',
-              '&:hover':{backgroundColor:'rgb(0, 0, 0, 0.8)', }
-            }}
-          >
-            <Box>
-              <Typography color={shades.secondary[200]}>NEW ITEMS</Typography>
-              <Typography variant="h1">Summer Sale</Typography>
-              <Typography
-                fontWeight="bold"
-                color={shades.secondary[300]}
-                sx={{ textDecoration: "" }}
-              >
-                Discover More
-              </Typography>
+              height: "600px",
+              position: 'relative'
+            }}>
+
+            {/* anchor hero #4 and #5 to bottom for medium+ scrns -- others can focus on center */}
+            {index === 4 || index === 5 ? (
+              <img
+                src={texture}
+                alt={`carousel-${index}`}
+                style={{
+                  objectFit: "cover",
+                  backgroundAttachment: "fixed",
+                  width: "100%",
+                  // to anchor to bottom:
+                  height: isMediumPlus ? '' : '100%',
+                  position: 'absolute',
+                  bottom: '0',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                }}
+              />
+            ) : (
+              <img
+                src={texture}
+                alt={`carousel-${index}`}
+                style={{
+                  objectFit: "cover",
+                  backgroundAttachment: "fixed",
+                  width: "100%",
+                  height: "600px",
+                }}
+              />
+            )}
+
+            <Box
+              onClick={handleScrollToStore}
+              color="white"
+              padding="20px"
+              borderRadius="1px"
+              textAlign="left"
+              position="absolute"
+              top="46%"
+              left={isNonMobile ? "10%" : "0"}
+              right={isNonMobile ? undefined : "0"}
+              margin={isNonMobile ? undefined : "0 auto"}
+              maxWidth={isNonMobile ? undefined : "240px"}
+              sx={{
+                cursor: 'pointer',
+                backgroundColor: "rgb(0, 0, 0, 0.7)",
+                transition: '0.3s',
+                '&:hover': { backgroundColor: 'rgb(0, 0, 0, 0.8)', }
+              }}
+            >
+              <Box>
+                <Typography color={shades.secondary[200]}>NEW ITEMS</Typography>
+                <Typography variant="h1">Bracelet Sale</Typography>
+                <Typography
+                  fontWeight="bold"
+                  color={shades.secondary[300]}
+                  sx={{ textDecoration: "" }}
+                >
+                  Discover More Below
+                </Typography>
+              </Box>
             </Box>
           </Box>
-        </Box>
+        </>
       ))}
+
     </Carousel>
   );
 };
