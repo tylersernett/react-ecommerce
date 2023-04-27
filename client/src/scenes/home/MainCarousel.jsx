@@ -15,13 +15,23 @@ const importAll = (r) =>
 export const heroTextureImports = importAll(
   require.context("../../assets/heros", false, /\.(png|jpe?g|svg)$/)
 );
-// 
+
+const handleScrollToStore = () => {
+  const storeElement = document.getElementById("store");
+  if (storeElement) {
+    const offset = storeElement.offsetTop - 80;
+    window.scrollTo({
+      top: offset,
+      behavior: "smooth"
+    });
+  }
+};
 
 const MainCarousel = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   return (
     <Carousel
-    autoPlay={true}
+      autoPlay={true}
       infiniteLoop={true}
       showThumbs={false}
       showIndicators={false}
@@ -36,6 +46,9 @@ const MainCarousel = () => {
             color: "white",
             padding: "5px",
             zIndex: "10",
+            '&:hover':{
+              backgroundColor:'rgb(0,0,0,0.5)'
+            }
           }}
         >
           <NavigateBeforeIcon sx={{ fontSize: 40 }} />
@@ -51,6 +64,9 @@ const MainCarousel = () => {
             color: "white",
             padding: "5px",
             zIndex: "10",
+            '&:hover':{
+              backgroundColor:'rgb(0,0,0,0.5)'
+            }
           }}
         >
           <NavigateNextIcon sx={{ fontSize: 40 }} />
@@ -70,27 +86,35 @@ const MainCarousel = () => {
             }}
           />
           <Box
+            onClick={handleScrollToStore}
             color="white"
             padding="20px"
             borderRadius="1px"
             textAlign="left"
-            backgroundColor="rgb(0, 0, 0, 0.7)"
             position="absolute"
             top="46%"
             left={isNonMobile ? "10%" : "0"}
             right={isNonMobile ? undefined : "0"}
             margin={isNonMobile ? undefined : "0 auto"}
             maxWidth={isNonMobile ? undefined : "240px"}
+            sx={{
+              cursor:'pointer',
+              backgroundColor:"rgb(0, 0, 0, 0.7)",
+              transition:'0.3s',
+              '&:hover':{backgroundColor:'rgb(0, 0, 0, 0.8)', }
+            }}
           >
-            <Typography color={shades.secondary[200]}>NEW ITEMS</Typography>
-            <Typography variant="h1">Summer Sale</Typography>
-            <Typography
-              fontWeight="bold"
-              color={shades.secondary[300]}
-              sx={{ textDecoration: "" }}
-            >
-              Discover More
-            </Typography>
+            <Box>
+              <Typography color={shades.secondary[200]}>NEW ITEMS</Typography>
+              <Typography variant="h1">Summer Sale</Typography>
+              <Typography
+                fontWeight="bold"
+                color={shades.secondary[300]}
+                sx={{ textDecoration: "" }}
+              >
+                Discover More
+              </Typography>
+            </Box>
           </Box>
         </Box>
       ))}
