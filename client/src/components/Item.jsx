@@ -41,7 +41,7 @@ const Item = ({ item, width }) => {
           style={{
             cursor: "pointer",
             transform: isHovered ? "scale(1.1)" : "scale(1)",
-            transition: "transform 0.3s ease-in-out",
+            transition: "transform 0.4s ease-in-out",
           }}
         />
 
