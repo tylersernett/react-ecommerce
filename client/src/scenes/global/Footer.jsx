@@ -1,6 +1,34 @@
 import { useTheme } from "@emotion/react";
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import { Box, Typography, useMediaQuery, IconButton } from "@mui/material";
 import { shades } from "../../theme";
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+
+function FacebookLink() {
+  return (
+    <IconButton
+      aria-label="Facebook"
+      href="https://www.facebook.com/thehoodnewmexico/"
+      target="_blank"
+      rel="noopener"
+    >
+      <FacebookIcon />
+    </IconButton>
+  );
+}
+
+function InstagramLink() {
+  return (
+    <IconButton
+      aria-label="Instagram"
+      href="https://www.instagram.com/thehoodnewmexico/"
+      target="_blank"
+      rel="noopener"
+    >
+      <InstagramIcon />
+    </IconButton>
+  );
+}
 
 function Footer() {
 
@@ -54,6 +82,10 @@ function Footer() {
               Turpis cursus in hac habitasse platea dictumst quisque sagittis purus.
               Auctor eu augue ut lectus. Amet facilisis magna etiam tempor.
             </Typography>
+            <Box ml='-10px'>
+              <FacebookLink />
+              <InstagramLink />
+            </Box>
           </Box>
 
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
