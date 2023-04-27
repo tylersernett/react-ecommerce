@@ -48,6 +48,9 @@ const Events = () => {
               color: "white",
               padding: "5px",
               zIndex: "10",
+              '&:hover': {
+                backgroundColor: 'rgb(0,0,0,0.4)'
+              }
             }}
           >
             <NavigateBeforeIcon sx={{ fontSize: 40 }} />
@@ -63,6 +66,9 @@ const Events = () => {
               color: "white",
               padding: "5px",
               zIndex: "10",
+              '&:hover': {
+                backgroundColor: 'rgb(0,0,0,0.4)'
+              }
             }}
           >
             <NavigateNextIcon sx={{ fontSize: 40 }} />
@@ -76,7 +82,7 @@ const Events = () => {
               alt={`carousel-${index}`}
               style={{
                 width: "100%",
-                height: "600px",
+                maxHeight: "600px",
                 objectFit: "cover",
                 backgroundAttachment: "fixed",
               }}
