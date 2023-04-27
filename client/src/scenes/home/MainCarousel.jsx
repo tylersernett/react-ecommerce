@@ -84,7 +84,7 @@ const MainCarousel = () => {
             }}>
 
             {/* anchor hero #4 and #5 to bottom for medium+ scrns -- others can focus on center */}
-            {index === 4 || index === 5 ? (
+            {index === 1 || index === 4 || index === 5 ? (
               <img
                 src={texture}
                 alt={`carousel-${index}`}
