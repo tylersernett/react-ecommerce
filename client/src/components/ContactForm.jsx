@@ -40,10 +40,9 @@ const ContactForm = () => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
-                    //success redirect
+                    //successful response:
                     formik.resetForm();
                     setIsSent(true)
-                    // window.location.href = '/thankyoubooked'
                     //return response.text();
                 })
                 .then(data => {
@@ -105,9 +104,7 @@ const ContactForm = () => {
                     error={formik.touched.message && Boolean(formik.errors.message)}
                     helperText={formik.touched.message && formik.errors.message}
                 />
-                {/* <input type="hidden" name="_next" value="http://localhost:2000/thankyou" /> */}
-                <Button
-                
+                <Button                
                     type='submit'
                     variant='contained'
                     sx={{my:'15px', backgroundColor: shades.secondary[600], '&:hover': { backgroundColor: shades.secondary[700] } }}
@@ -118,6 +115,7 @@ const ContactForm = () => {
                 </Button>
             </form>
 
+            {/* display the following confirmation once server response is received & isSent is true */}
             {isSent && (
                 <Typography variant="subtitle1" color="white">
                     Your message has been received!

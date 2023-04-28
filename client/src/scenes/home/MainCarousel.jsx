@@ -38,7 +38,7 @@ const MainCarousel = () => {
       showThumbs={false}
       showIndicators={false}
       showStatus={false}
-      renderArrowPrev={(onClickHandler, hasPrev, label) => (
+      renderArrowPrev={(onClickHandler) => (
         <IconButton
           onClick={onClickHandler}
           sx={{
@@ -56,7 +56,7 @@ const MainCarousel = () => {
           <NavigateBeforeIcon sx={{ fontSize: 40 }} />
         </IconButton>
       )}
-      renderArrowNext={(onClickHandler, hasNext, label) => (
+      renderArrowNext={(onClickHandler) => (
         <IconButton
           onClick={onClickHandler}
           sx={{
@@ -83,7 +83,7 @@ const MainCarousel = () => {
               position: 'relative'
             }}>
 
-            {/* anchor hero #4 and #5 to bottom for medium+ scrns -- others can focus on center */}
+            {/* anchor hero #1, 4, 5 to bottom for medium+ scrns -- all others can focus on center */}
             {index === 1 || index === 4 || index === 5 ? (
               <img
                 src={texture}
@@ -101,6 +101,7 @@ const MainCarousel = () => {
                 }}
               />
             ) : (
+              // for all others, focus on center:
               <img
                 src={texture}
                 alt={`carousel-${index}`}
@@ -134,7 +135,7 @@ const MainCarousel = () => {
             >
               <Box>
                 <Typography color={shades.secondary[200]}>NEW ITEMS</Typography>
-                <Typography variant="h1">Bracelet Sale</Typography>
+                <Typography variant="h1">Jewelry Sale</Typography>
                 <Typography
                   fontWeight="bold"
                   color={shades.secondary[300]}
