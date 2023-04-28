@@ -1,10 +1,11 @@
 'use strict';
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
-
+const { serv_config } = require("../../../../constants");
 /**
  * order controller
  */
 
+const baseURL = serv_config.url.BASE_URL;
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::order.order', ({ strapi }) => ({ //access values within strapi
@@ -37,8 +38,8 @@ module.exports = createCoreController('api::order.order', ({ strapi }) => ({ //a
                 payment_method_types: ["card"],
                 customer_email: email,
                 mode: "payment",
-                success_url: "http://localhost:2000/react-ecommerce/checkout/success",
-                cancel_url: "http://localhost:2000/react-ecommerce",
+                success_url: `${baseURL}/checkout/success`,
+                cancel_url: `${baseURL}`,
                 line_items: lineItems,
             });
 
