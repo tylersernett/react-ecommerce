@@ -7,8 +7,10 @@ import { Typography } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useDispatch, useSelector } from "react-redux";
 import { setItems } from "../../state";
+import { config } from "../../constants";
 
 const ShoppingList = () => {
+  const apiURL = config.url.API_URL;
   const dispatch = useDispatch();
   const [value, setValue] = useState("all");
   const items = useSelector((state) => state.cart.items);
@@ -20,7 +22,7 @@ const ShoppingList = () => {
 
   async function getItems() {
     const items = await fetch(
-      "http://localhost:1337/api/items?populate=image",
+      `${apiURL}/api/items?populate=image`,
       { method: "GET" }
     );
     const itemsJson = await items.json();

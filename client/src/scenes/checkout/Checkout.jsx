@@ -7,12 +7,14 @@ import { shades } from "../../theme";
 import Payment from "./Payment";
 import Shipping from "./Shipping";
 import { loadStripe } from "@stripe/stripe-js";
+import { config } from "../../constants";
 
 const stripePromise = loadStripe(
   "pk_test_51M9KOcLv6KFHr5HhP9FBIHZCPqDoI1OzKsXcQL4VPX9cEBuptdbl0D7SYsexV79OCwUloA52X91luONgiMIDu0ej00yO36jqq8"
 );
 
 const Checkout = () => {
+  const apiURL = config.url.API_URL;
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector((state) => state.cart.cart);
   const isFirstStep = activeStep === 0;
@@ -48,7 +50,7 @@ const Checkout = () => {
       })),
     };
 
-    const response = await fetch("http://localhost:1337/api/orders", {
+    const response = await fetch(`${apiURL}/api/orders`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),

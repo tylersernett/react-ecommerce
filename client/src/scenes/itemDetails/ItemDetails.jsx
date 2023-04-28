@@ -10,8 +10,10 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { shades } from "../../theme";
 import { addToCart } from "../../state";
 import { useDispatch } from "react-redux";
+import { config } from "../../constants";
 
 const ItemDetails = () => {
+  const apiURL = config.url.API_URL;
   const dispatch = useDispatch();
   const { itemId } = useParams();
   const [value, setValue] = useState("description");
@@ -25,7 +27,7 @@ const ItemDetails = () => {
 
   async function getItem() {
     const item = await fetch(
-      `http://localhost:1337/api/items/${itemId}?populate=image`,
+      `${apiURL}/api/items/${itemId}?populate=image`,
       {
         method: "GET",
       }
@@ -37,7 +39,7 @@ const ItemDetails = () => {
   //for 'related items' later....
   async function getItems() {
     const items = await fetch(
-      `http://localhost:1337/api/items?populate=image`,
+      `${apiURL}/api/items?populate=image`,
       {
         method: "GET",
       }
@@ -60,7 +62,7 @@ const ItemDetails = () => {
             alt={item?.name}
             width="100%"
             height="100%"
-            src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+            src={`${apiURL}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
             style={{ objectFit: "contain" }}
           />
         </Box>

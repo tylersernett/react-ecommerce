@@ -7,6 +7,7 @@ import styled from "@emotion/styled";
 import { shades } from "../../theme";
 import { decreaseCount, increaseCount, removeFromCart, setIsCartOpen, } from "../../state";
 import { useNavigate } from "react-router-dom";
+import { config } from "../../constants";
 
 //allow for re-use of css (kind of like component)
 const FlexBox = styled(Box)`
@@ -16,6 +17,7 @@ const FlexBox = styled(Box)`
 `;
 
 const CartMenu = () => {
+    const apiURL = config.url.API_URL;
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart.cart); //state.sliceName.prop
@@ -66,7 +68,7 @@ const CartMenu = () => {
                                         alt={item?.name}
                                         width="123px"
                                         height="123px"
-                                        src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+                                        src={`${apiURL}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
                                     />
                                 </Box>
                                 <Box flex="1 1 60%">
