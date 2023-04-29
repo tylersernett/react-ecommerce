@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { config } from "../constants";
 
 const Item = ({ item, width }) => {
-  const apiURL = config.url.API_URL;
+  const apiURL = config.url.IMG_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
