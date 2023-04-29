@@ -14,6 +14,7 @@ import { config } from "../../constants";
 
 const ItemDetails = () => {
   const apiURL = config.url.API_URL;
+  const imgURL = config.url.IMG_URL;
   const dispatch = useDispatch();
   const { itemId } = useParams();
   const [value, setValue] = useState("description");
@@ -62,7 +63,7 @@ const ItemDetails = () => {
             alt={item?.name}
             width="100%"
             height="100%"
-            src={`${apiURL}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+            src={`${imgURL}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
             style={{ objectFit: "contain" }}
           />
         </Box>

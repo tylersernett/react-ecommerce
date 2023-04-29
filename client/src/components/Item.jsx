@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { config } from "../constants";
 
 const Item = ({ item, width }) => {
-  const apiURL = config.url.IMG_URL;
+  const imgURL = config.url.IMG_URL;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
@@ -38,7 +38,7 @@ const Item = ({ item, width }) => {
           alt={item.name}
           width="300px"
           height="300px"
-          src={`${apiURL}${url}`}
+          src={`${imgURL}${url}`}
           onClick={() => navigate(`/item/${item.id}`)}
           style={{
             cursor: "pointer",
