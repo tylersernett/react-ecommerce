@@ -17,7 +17,7 @@ const FlexBox = styled(Box)`
 `;
 
 const CartMenu = () => {
-    const apiURL = config.url.API_URL;
+    const imgURL = config.url.IMG_URL;
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart.cart); //state.sliceName.prop
@@ -43,8 +43,8 @@ const CartMenu = () => {
 
 
     return (
-        <Drawer anchor="right" open={isCartOpen} onClose={toggleDrawer(false)}>
-            <Box padding="20px" overflow="auto" height="100%"> {/*  minWidth='380px' */}
+        <Drawer anchor="right" open={isCartOpen} onClose={toggleDrawer(false)} >
+            <Box padding="20px" overflow="auto" height="100%" sx={{width:'400px'}}> {/*  minWidth='380px' */}
                 {/* HEADER */}
                 <FlexBox mb="15px" sx={{ display: 'flex', flexDirection: 'row-reverse' }}> {/* reverse direction so X is always right*/}
                     <IconButton onClick={() => dispatch(setIsCartOpen({}))}>
@@ -68,7 +68,7 @@ const CartMenu = () => {
                                         alt={item?.name}
                                         width="123px"
                                         height="123px"
-                                        src={`${apiURL}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+                                        src={`${imgURL}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
                                     />
                                 </Box>
                                 <Box flex="1 1 60%">
