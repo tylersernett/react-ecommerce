@@ -70,16 +70,16 @@ const ItemDetails = () => {
 
         {/* ACTIONS */}
         <Box flex="1 1 50%" mb="40px">
-          <Box display="flex" justifyContent="space-between">
+          {/* <Box display="flex" justifyContent="space-between">
             <Box>Home/Item</Box>
             <Box>Prev Next</Box>
-          </Box>
+          </Box> */}
 
           <Box m="65px 0 25px 0">
             <Typography variant="h3">{item?.attributes?.name}</Typography>
             <Typography>${item?.attributes?.price}</Typography>
             <Typography sx={{ mt: "20px" }}>
-              {item?.attributes?.longDescription}
+              {item?.attributes?.shortDescription}
             </Typography>
           </Box>
 
@@ -116,11 +116,11 @@ const ItemDetails = () => {
             </Button>
           </Box>
           <Box>
-            <Box m="20px 0 5px 0" display="flex">
+            {/* <Box m="20px 0 5px 0" display="flex">
               <FavoriteBorderOutlinedIcon />
               <Typography sx={{ ml: "5px" }}>ADD TO WISHLIST</Typography>
-            </Box>
-            <Typography>CATEGORIES: {item?.attributes?.category}</Typography>
+            </Box> */}
+            <Typography mt='15px'>CATEGORIES: {item?.attributes?.category}</Typography>
           </Box>
         </Box>
       </Box>
