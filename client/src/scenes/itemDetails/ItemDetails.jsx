@@ -15,6 +15,7 @@ import { config } from "../../constants";
 const ItemDetails = () => {
   const apiURL = config.url.API_URL;
   const imgURL = config.url.IMG_URL;
+  const baseURL = config.url.baseURL;
   const dispatch = useDispatch();
   const { itemId } = useParams();
   const [value, setValue] = useState("description");
@@ -26,15 +27,37 @@ const ItemDetails = () => {
     setValue(newValue);
   };
 
+  // async function getItem() {
+  //   const item = await fetch(
+  //     `${apiURL}/api/items/${itemId}?populate=image`,
+  //     {
+  //       method: "GET",
+  //     }
+  //   );
+  //   if (item.status !== 200) {
+  //     // You can do your error handling here
+  //   } else {
+  //     // Call the .json() method on your response to get your JSON data
+  //     const itemJson = await item.json();
+  //     setItem(itemJson.data);
+  //   }
+  // }
   async function getItem() {
-    const item = await fetch(
-      `${apiURL}/api/items/${itemId}?populate=image`,
-      {
+    try {
+      const response = await fetch(`${apiURL}/api/items/${itemId}?populate=image`, {
         method: "GET",
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    );
-    const itemJson = await item.json();
-    setItem(itemJson.data);
+      const itemJson = await response.json();
+      setItem(itemJson.data);
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+      // Redirect to /notfound
+      //do useNavigate instead???
+      window.location.href = `${baseURL}/notfound`;
+    }
   }
 
   //for 'related items' later....
@@ -153,7 +176,7 @@ const ItemDetails = () => {
           justifyContent="flex-start"
         >
           {items
-            .filter(thing => (thing.attributes.category === item.attributes.category) && (thing.id !== item.id))
+            .filter(thing => (thing?.attributes?.category === item?.attributes?.category) && (thing?.id !== item?.id))
             .slice(0, 3).map((item, i) => (
               <Item key={`${item.name}-${i}`} item={item} />
             ))}
