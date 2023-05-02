@@ -33,23 +33,14 @@ const ShoppingList = () => {
     getItems();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  //create arrays of items that match categories in the shop:
-
-  // const newArrivalsItems = items.filter(
-  //   (item) => item.attributes.category === "newArrivals"
-  // );
-  const braceletsItems = items.filter(
-    (item) => item.attributes.category === "bracelets"
-  );
-  const earringsItems = items.filter(
-    (item) => item.attributes.category === "earrings"
-  );
-  const necklacesItems = items.filter(
-    (item) => item.attributes.category === "necklaces"
-  );
-  const ringsItems = items.filter(
-    (item) => item.attributes.category === "rings"
-  );
+  const categories = ["bracelets", "earrings", "necklaces", "rings"]
+  //create object that filters out the items by their category type, e.g. itemsByCategory.bracelets = [{item1}, {item2}]
+  const itemsByCategory = {};
+  categories.forEach((category) => {
+    itemsByCategory[category] = items.filter(
+      (item) => item?.attributes?.category === category
+    );
+  });
 
   return (
     <Box width="80%" margin="80px auto" id='store'>
@@ -60,8 +51,7 @@ const ShoppingList = () => {
         textColor="secondary"
         indicatorColor="secondary"
         value={value}
-        // clicking a new tab changes the VALUE
-        onChange={handleChange} 
+        onChange={handleChange} // clicking a new tab changes the VALUE
         centered
         TabIndicatorProps={{ sx: { display: isNonMobile ? "block" : "none" } }}
         sx={{
@@ -72,11 +62,9 @@ const ShoppingList = () => {
         }}
       >
         <Tab label="ALL" value="all" />
-        {/* <Tab label="NEW ARRIVALS" value="newArrivals" /> */}
-        <Tab label="Bracelets" value="bracelets" />
-        <Tab label="Earrings" value="earrings" />
-        <Tab label="Necklaces" value="necklaces" />
-        <Tab label="Rings" value="rings" />
+        {categories.map((category) => (
+          <Tab label={category} value={category} />
+        ))}
       </Tabs>
 
       {/* SHOP ITEMS */}
@@ -88,30 +76,16 @@ const ShoppingList = () => {
         rowGap="20px"
         columnGap="1.33%"
       >
+        {/* Display only items that match the selected category */}
         {value === "all" &&
           items.map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {/* {value === "newArrivals" &&
-          newArrivalsItems.map((item) => (
-            <Item item={item} key={`${item.name}-${item.id}`} />
-          ))} */}
-        {value === "earrings" &&
-          earringsItems.map((item) => (
+        {categories.includes(value) &&
+          itemsByCategory[value].map((item) => (
             <Item item={item} key={`${item.name}-${item.id}`} />
           ))}
-        {value === "bracelets" &&
-          braceletsItems.map((item) => (
-            <Item item={item} key={`${item.name}-${item.id}`} />
-          ))}
-        {value === "necklaces" &&
-          necklacesItems.map((item) => (
-            <Item item={item} key={`${item.name}-${item.id}`} />
-          ))}
-        {value === "rings" &&
-          ringsItems.map((item) => (
-            <Item item={item} key={`${item.name}-${item.id}`} />
-          ))}
+
       </Box>
     </Box>
   );
