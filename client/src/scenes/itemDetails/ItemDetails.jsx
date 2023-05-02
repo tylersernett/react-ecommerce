@@ -114,7 +114,7 @@ const ItemDetails = () => {
               mr="20px"
               p="2px 5px"
             >
-              <IconButton onClick={() => setCount(Math.max(count - 1, 0))}>
+              <IconButton onClick={() => setCount(Math.max(count - 1, 1))}>
                 <RemoveIcon />
               </IconButton>
               <Typography sx={{ p: "0 5px" }}>{count}</Typography>
