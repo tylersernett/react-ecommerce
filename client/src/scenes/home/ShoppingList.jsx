@@ -63,7 +63,7 @@ const ShoppingList = () => {
       >
         <Tab label="ALL" value="all" />
         {categories.map((category) => (
-          <Tab label={category} value={category} />
+          <Tab label={category} value={category} key={category} />
         ))}
       </Tabs>
 
