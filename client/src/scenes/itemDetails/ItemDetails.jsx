@@ -152,8 +152,8 @@ const ItemDetails = () => {
       <Box m="20px 0">
         <Tabs value={value} onChange={handleChange} textColor="secondary"
           indicatorColor="secondary">
-          <Tab label="DESCRIPTION" value="description" />
-          <Tab label="REVIEWS" value="reviews" />
+          <Tab label="DESCRIPTION" value="description" sx={{cursor:'auto'}} />
+          {/* <Tab label="REVIEWS" value="reviews" /> */}
         </Tabs>
       </Box>
       <Box display="flex" flexWrap="wrap" gap="15px">
