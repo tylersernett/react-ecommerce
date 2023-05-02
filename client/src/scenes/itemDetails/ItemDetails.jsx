@@ -143,7 +143,10 @@ const ItemDetails = () => {
               <FavoriteBorderOutlinedIcon />
               <Typography sx={{ ml: "5px" }}>ADD TO WISHLIST</Typography>
             </Box> */}
-            <Typography mt='15px'>CATEGORIES: {item?.attributes?.category}</Typography>
+            <Typography mt='15px' fontSize='small' color={shades.neutral[600]}>CATEGORY: {item?.attributes?.category
+              .replace(/([A-Z])/g, " $1") //capture first Capital letter, then insert a space before it
+              .replace(/^./, (str) => str.toUpperCase()) //make the first character Capital
+            }</Typography>
           </Box>
         </Box>
       </Box>
@@ -152,7 +155,7 @@ const ItemDetails = () => {
       <Box m="20px 0">
         <Tabs value={value} onChange={handleChange} textColor="secondary"
           indicatorColor="secondary">
-          <Tab label="DESCRIPTION" value="description" sx={{cursor:'auto'}} />
+          <Tab label="DESCRIPTION" value="description" sx={{ cursor: 'auto' }} />
           {/* <Tab label="REVIEWS" value="reviews" /> */}
         </Tabs>
       </Box>
