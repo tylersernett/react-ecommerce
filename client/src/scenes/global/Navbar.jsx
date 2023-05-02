@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react';
 import { useNavigate, NavLink } from "react-router-dom";
-import { Badge, Box, IconButton, Typography, AppBar, Container, Toolbar, Menu, Button, MenuItem, useMediaQuery } from "@mui/material";
+import { Link as RouterLink } from 'react-router-dom';
+import { Badge, Box, IconButton, Link, Typography, AppBar, Container, Toolbar, Menu, Button, MenuItem, useMediaQuery } from "@mui/material";
 import { ShoppingBagOutlined } from "@mui/icons-material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { shades } from "../../theme";
@@ -48,7 +49,7 @@ const Navbar = () => {
                             cursor: 'pointer',
                         }}
                     >
-                        THE HOOD
+                        <Link component={RouterLink} to={'/'} color='inherit' underline="none">THE HOOD</Link>
                     </Typography>
 
                     {/* DESKTOP NAV============================================= */}
@@ -61,7 +62,7 @@ const Navbar = () => {
                         zIndex="2"
                     >
                         {pages.map((page) => (
-                            <NavLink key={page} to={`/${page}`} style={{ textDecoration: 'none', color: 'white' }}>
+                            <NavLink key={page} to={`/${page}`} style={{ textDecoration: 'none', color: 'white' }} tabIndex="-1">
                                 <Button
                                     onClick={handleCloseNavMenu} //to ensure scroll doesn't get locked if user transitions from small to large window
                                     sx={{ my: 2, color: 'white', display: 'block', backgroundColor: 'transparent' }}
@@ -110,13 +111,10 @@ const Navbar = () => {
                             {pages.map((page) => (
                                 <MenuItem key={page}
                                     onClick={handleCloseNavMenu}
-                                // onClick={navigate(`/${page}`)}
+                                    component={RouterLink}
+                                    to={`/${page}`}
                                 >
-                                    {/* <Button align="center" width='100%' onClick={} > */}
-                                    <NavLink to={`/${page}`} style={{ textDecoration: 'none', color: 'white', width: '100%' }}>
-                                        {page}
-                                    </NavLink>
-                                    {/* </Button> */}
+                                    {page}
                                 </MenuItem>
                             ))}
                         </Menu>
