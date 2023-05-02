@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { IconButton, Box, Typography, useTheme, Button } from "@mui/material";
+import { IconButton, Box, Typography, useTheme, Button, Link } from "@mui/material";
+import { Link as RouterLink } from 'react-router-dom';
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { shades } from "../theme";
@@ -90,7 +91,11 @@ const Item = ({ item, width }) => {
             .replace(/^./, (str) => str.toUpperCase()) //make the first character Capital
           }
         </Typography>
-        <Typography fontWeight="bold">{name}</Typography>
+        <Typography fontWeight="bold">
+          <Link component={RouterLink} to={`/item/${item.id}`} color='white' underline="hover">
+            {name}
+          </Link>
+        </Typography>
         <Typography >${price}</Typography>
       </Box>
     </Box>
