@@ -68,7 +68,7 @@ const CartMenu = () => {
                                         alt={item?.name}
                                         width="123px"
                                         height="123px"
-                                        src={`${imgURL}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+                                        src={`${imgURL}${item?.attributes?.image?.data?.attributes?.url}`}
                                     />
                                 </Box>
                                 <Box flex="1 1 60%">

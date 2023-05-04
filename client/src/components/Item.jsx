@@ -21,7 +21,8 @@ const Item = ({ item, width }) => {
 
   //strapi destructuring:
   const { category, price, name, image } = item.attributes;
-  const { data: { attributes: { formats: { medium: { url } } } } } = image;
+  // const { data: { attributes: { formats: { medium: { url } } } } } = image; //old format, no longer doing medium
+  const { data: { attributes: {  url } } } = image;
 
   return (
     <Box width={width}>
