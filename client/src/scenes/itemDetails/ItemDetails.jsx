@@ -86,7 +86,7 @@ const ItemDetails = () => {
             alt={item?.name}
             width="100%"
             height="100%"
-            src={`${imgURL}${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+            src={`${imgURL}${item?.attributes?.image?.data?.attributes?.url}`}
             style={{ objectFit: "contain" }}
           />
         </Box>
