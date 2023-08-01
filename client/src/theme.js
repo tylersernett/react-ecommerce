@@ -1,5 +1,4 @@
 import { createTheme } from "@mui/material/styles";
-import { radioClasses } from "@mui/material";
 
 export const shades = {
     primary: {
@@ -91,7 +90,6 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     color: 'white',
-                    // color:shades.secondary[500], //font
                     backgroundColor: shades.primary[400],
                     "&:hover": {
                         backgroundColor: shades.primary[300],
@@ -170,7 +168,6 @@ export const theme = createTheme({
         MuiToggleButtonGroup: {
             styleOverrides: {
                 root: {
-                    // backgroundColor: shades.neutral[800],
                     border: `1px solid ${shades.neutral[900]}`,
                 },
                 grouped: {
@@ -180,30 +177,5 @@ export const theme = createTheme({
                 }
             }
         },
-        // .css-tarfny-MuiButtonBase-root-MuiPickersDay-root.Mui-selected
-        // MuiCheckBox: {
-        //     styleOverrides: {
-        //         root: {
-        //             color: shades.neutral[500],
-        //             "& .Mui-checked": {
-        //                 color: shades.secondary[400],
-        //             }
-
-        //         },
-        //         // checked: {
-        //         //     color: shades.secondary[400],
-        //         // },
-        //     }
-        // }
     },
-    // overrides: {
-    //     MuiCheckbox: {
-    //         colorSecondary: {
-    //             color: '#ff0000',
-    //             '& .Mui-checked': {
-    //                 color: '#00ff00',
-    //             },
-    //         },
-    //     },
-    // },
 });

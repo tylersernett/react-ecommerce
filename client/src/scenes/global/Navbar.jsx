@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react';
-import { useNavigate, NavLink } from "react-router-dom";
-import { Link as RouterLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, NavLink, Link as RouterLink } from "react-router-dom";
 import { Badge, Box, IconButton, Link, Typography, AppBar, Container, Toolbar, Menu, Button, MenuItem, useMediaQuery } from "@mui/material";
 import { ShoppingBagOutlined } from "@mui/icons-material";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -12,7 +11,6 @@ const pages = ['Shop', 'Events', 'Appointments'];
 
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
-    const isMedScreen = useMediaQuery("(min-width:900px)");
     const isSmlScreen = useMediaQuery("(min-width:800px)");
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);

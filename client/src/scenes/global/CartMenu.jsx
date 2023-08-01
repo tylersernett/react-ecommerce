@@ -1,12 +1,12 @@
-import { Box, Button, Divider, IconButton, Typography, Drawer } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import styled from "@emotion/styled";
+import { Box, Button, Divider, IconButton, Typography, Drawer } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import styled from "@emotion/styled";
 import { shades } from "../../theme";
 import { decreaseCount, increaseCount, removeFromCart, setIsCartOpen, } from "../../state";
-import { useNavigate } from "react-router-dom";
 import { config } from "../../constants";
 
 //allow for re-use of css (kind of like component)

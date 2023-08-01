@@ -1,15 +1,15 @@
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import Item from "../../components/Item";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+// import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { shades } from "../../theme";
 import { addToCart } from "../../state";
-import { useDispatch } from "react-redux";
 import { config } from "../../constants";
 
 const ItemDetails = () => {
@@ -27,21 +27,6 @@ const ItemDetails = () => {
     setValue(newValue);
   };
 
-  // async function getItem() {
-  //   const item = await fetch(
-  //     `${apiURL}/api/items/${itemId}?populate=image`,
-  //     {
-  //       method: "GET",
-  //     }
-  //   );
-  //   if (item.status !== 200) {
-  //     // You can do your error handling here
-  //   } else {
-  //     // Call the .json() method on your response to get your JSON data
-  //     const itemJson = await item.json();
-  //     setItem(itemJson.data);
-  //   }
-  // }
   async function getItem() {
     try {
       const response = await fetch(`${apiURL}/api/items/${itemId}?populate=image`, {

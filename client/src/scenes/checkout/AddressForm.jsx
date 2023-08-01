@@ -1,7 +1,7 @@
 import { getIn } from "formik";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 //some drilled values here, cleanup with useContext
 const AddressForm = ({ type, values, touched, errors, handleBlur, handleChange }) => {
