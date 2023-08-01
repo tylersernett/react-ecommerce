@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
 import { useState } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Box, Button, Stepper, Step, StepLabel } from "@mui/material";
+import { useSelector } from "react-redux";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { loadStripe } from "@stripe/stripe-js";
+import { Box, Button, Stepper, Step, StepLabel } from "@mui/material";
 import { shades } from "../../theme";
 import Payment from "./Payment";
 import Shipping from "./Shipping";

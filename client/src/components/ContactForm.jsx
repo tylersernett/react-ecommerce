@@ -1,12 +1,12 @@
 import { React, useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import useMediaQuery from "@mui/material/useMediaQuery";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import { shades } from '../theme';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 const ContactForm = () => {
     const [isSent, setIsSent] = useState(false)
