@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
 import { Box, Button, Stepper, Step, StepLabel } from "@mui/material";
 import { Formik } from "formik";
-import { createContext, useState } from "react";
 import * as yup from "yup";
 import { shades } from "../../theme";
 import Payment from "./Payment";
 import Shipping from "./Shipping";
-import { loadStripe } from "@stripe/stripe-js";
 import { config } from "../../constants";
 
 const stripePromise = loadStripe(

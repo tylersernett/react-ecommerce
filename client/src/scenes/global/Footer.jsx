@@ -43,17 +43,12 @@ function Footer() {
           gridTemplateColumns: '2fr 1fr 1fr',
           gridGap: '30px',
           columnGap: "60px",
-          // padding: '20px',
           color: '#fff',
           '@media (max-width: 992px)': {
             gridTemplateColumns: '1fr 1fr',
             gridTemplateRows: 'auto',
             columnGap: "30px",
           },
-          // '@media (max-width: 576px)': {
-          //   gridTemplateColumns: '1fr',
-          //   gridTemplateRows: 'auto auto auto'
-          // }
         }}>
           <Box
             sx={{
@@ -63,10 +58,6 @@ function Footer() {
                 gridColumnStart: '1',
                 gridColumnEnd: '3',
               },
-              // '@media (max-width: 576px)': {
-              //   gridColumnStart: '1',
-              //   gridColumnEnd: '2',
-              // }
             }}>
             <Typography
               variant="h4"
@@ -78,9 +69,6 @@ function Footer() {
               THE HOOD
             </Typography>
             <Typography variant="body1" sx={{ fontSize: '14px', lineHeight: 1.5, m: 0 }}>
-              {/* Nunc sed augue lacus viverra vitae congue eu. Eget magna fermentum iaculis eu.
-              Turpis cursus in hac habitasse platea dictumst quisque sagittis purus.
-              Auctor eu augue ut lectus. Amet facilisis magna etiam tempor. */}
               <i>noun (slang) </i>&nbsp; short for "neigh•bor•hood"
               <br/>as in community • culture • barrio.
               <br/>Proudly serving the Las Cruces area since 2020.

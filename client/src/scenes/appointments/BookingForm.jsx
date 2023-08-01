@@ -1,15 +1,14 @@
-import { React, useRef, useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
-import { shades } from '../../theme';
+import { React, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import { shades } from '../../theme';
 
 const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
-    const formRef = useRef();
     const isNonMobile = useMediaQuery("(min-width:600px)");
     const [isBooked, setIsBooked] = useState(false)
 
@@ -57,8 +56,6 @@ const BookingForm = ({ selectedDate, selectedTime, setSelectedTime }) => {
                     //success redirect
                     formik.resetForm();
                     setIsBooked(true)
-                    // window.location.href = '/thankyoubooked'
-                    //return response.text();
                 })
                 .then(data => {
                     console.log(data);
