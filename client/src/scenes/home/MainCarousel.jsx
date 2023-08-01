@@ -134,7 +134,7 @@ const MainCarousel = () => {
             >
               <Box>
                 <Typography color={shades.secondary[200]}>NEW ITEMS</Typography>
-                <Typography variant="h1">Jewelry Sale</Typography>
+                <Typography variant="h2" sx={{fontSize: 48}}>Jewelry Sale</Typography>
                 <Typography
                   fontWeight="bold"
                   color={shades.secondary[300]}
