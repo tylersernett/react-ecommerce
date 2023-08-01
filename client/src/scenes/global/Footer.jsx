@@ -1,9 +1,7 @@
-// import { useTheme } from "@emotion/react";
-import { Box, Typography, useMediaQuery, Link, IconButton } from "@mui/material";
-// import { Link } from "react-router-dom";
-import { shades } from "../../theme";
+import { Box, Typography, Link, IconButton } from "@mui/material";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import { shades } from "../../theme";
 
 function FacebookLink() {
   return (
@@ -80,9 +78,12 @@ function Footer() {
               THE HOOD
             </Typography>
             <Typography variant="body1" sx={{ fontSize: '14px', lineHeight: 1.5, m: 0 }}>
-              Nunc sed augue lacus viverra vitae congue eu. Eget magna fermentum iaculis eu.
+              {/* Nunc sed augue lacus viverra vitae congue eu. Eget magna fermentum iaculis eu.
               Turpis cursus in hac habitasse platea dictumst quisque sagittis purus.
-              Auctor eu augue ut lectus. Amet facilisis magna etiam tempor.
+              Auctor eu augue ut lectus. Amet facilisis magna etiam tempor. */}
+              <i>noun (slang) </i>&nbsp; short for "neigh•bor•hood"
+              <br/>as in community • culture • barrio.
+              <br/>Proudly serving the Las Cruces area since 2020.
             </Typography>
             <Box ml='-10px'>
               <FacebookLink />
