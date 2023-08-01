@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import { Typography, CircularProgress } from "@mui/material";
 import Item from "../../components/Item";
-import { Typography } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useDispatch, useSelector } from "react-redux";
 import { setItems } from "../../state";
 import { config } from "../../constants";
 
@@ -13,6 +13,7 @@ const ShoppingList = () => {
   const apiURL = config.url.API_URL;
   const dispatch = useDispatch();
   const [value, setValue] = useState("all");
+  const [isLoading, setIsLoading] = useState(true);
   const items = useSelector((state) => state.cart.items);
   const isNonMobile = useMediaQuery("(min-width:645px)");
 
@@ -27,6 +28,7 @@ const ShoppingList = () => {
     );
     const itemsJson = await items.json();
     dispatch(setItems(itemsJson.data));
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -68,6 +70,12 @@ const ShoppingList = () => {
       </Tabs>
 
       {/* SHOP ITEMS */}
+      {isLoading ? ( // Render the loading message if items are loading
+        <Typography variant='h4'  textAlign="center" >
+          <Box><CircularProgress color="secondary" /></Box>
+          <Box marginTop='20px'>database loading...</Box>
+        </Typography>
+      ) : (
       <Box
         margin="0 auto"
         display="grid"
@@ -87,6 +95,7 @@ const ShoppingList = () => {
           ))}
 
       </Box>
+    )}
     </Box>
   );
 };
