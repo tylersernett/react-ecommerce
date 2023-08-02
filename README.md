@@ -13,6 +13,7 @@ npm install
 
 Client:
 ```js
+npm run build
 npm run start
 ```
 
