@@ -4,7 +4,7 @@ Digital storefront for Las Cruces, NM based business specializing in art, jewelr
 
 [Live Site](https://tylersernett.github.io/react-ecommerce/)
 
-<img src="./readme/thehood.png" alt="the hood screenshot" width="870"/>
+<img src="./readme/thehood.png" alt="the hood screenshot" style="max-height:400px;"/>
 
 ## Installation & Usage
 
@@ -32,7 +32,8 @@ Material UI styling, stateful Redux shopping cart, Strapi CMS backend, Formik/Yu
 
 ## Appintment Scheduler Preview:
 
-<img src="./readme/scheduler.png" alt="scheduler screenshot" width="800"/>
+<img src="./readme/scheduler.png" alt="scheduler screenshot" style="max-height:400px;"/>
 
 ## Tour Preview:
-<img src="./readme/virtual-tour.png" alt="virtual tour screenshot" width="870"/>
+
+<img src="./readme/virtual-tour.png" alt="virtual tour screenshot" style="max-height:870px;"/>
